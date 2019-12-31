@@ -1,0 +1,1 @@
+<img height="{{include.height}}" class="{{include.class}}" src="{% if post.avatar contains '://' %}{% elsif post.avatar %}{{ site.baseurl }}/assets/hackergotchi/{% else %}{{ site.baseurl }}/assets/hackergotchi/default.png{% endif %}{{ post.avatar }}"/>

@@ -1,0 +1,8 @@
+<svg width="18" height="12" version="1.1" viewBox="0 0 18 12" xmlns="http://www.w3.org/2000/svg">
+ <desc>Flag of Germany</desc>
+ <g stroke-width="3.7947">
+  <rect id="black_stripe" width="18" height="12"/>
+  <rect id="red_stripe" y="4" width="18" height="8" fill="#d00"/>
+  <rect id="gold_stripe" y="8" width="18" height="4" fill="#ffce00"/>
+ </g>
+</svg>

@@ -1,0 +1,43 @@
+{% assign lang = site.data.language[post.tags.first] %}
+<div class="row m-0">
+	<div class="col-2 offset-md-1 col-md-1 p-0 d-md-block d-none">
+		{% include avatar.html class="w-100 pr-3" %}
+	</div>
+	<div class="col-12 col-md-8 p-0">
+		<div class="card mb-3 card-sm-border-0">
+			<div class="row m-0 border-bottom">
+			<div class="col-auto d-md-none d-flex p-0">
+			{% include avatar.html height="48px" class="my-auto" %}
+			</div>
+			<div class="col card-header d-flex justify-content-between pl-1 pl-md-3 border-0">
+				<div>
+				<a title="{{lang.name}}" href="{{ site.baseurl }}/{{ post.tags.first }}"><img src="{{ site.baseurl }}/assets/images/flags/{{ lang.img }}" class="border"/></a>
+				<a href="{{ post.link }}">{{ post.author }}</a>
+				<a href="{{ post.rss }}"><span title="RSS Feed" class="typcn typcn-rss"></span></a>
+				<span class="text-muted">posted at</span>
+				<a class="text-muted" href="{{ post.original_link }}">{{ post.created_at | date: "%H:%M" }} </a>
+				</div>
+				<div>
+				{% if post.member %}
+					<a title="openSUSE Member" href="{% if post.connect %}https://connect.opensuse.org/pg/profile/{{ post.connect }}{% else %}https://en.opensuse.org/openSUSE:Members{% endif %}" class="badge badge-success"><img src="{{ site.baseurl }}/assets/images/profile/member.svg"/> Member</a>
+				{% elsif post.connect %}
+					<a href="https://connect.opensuse.org/pg/profile/{{ post.connect }}"><img title="Profile on Connect" src="{{ site.baseurl }}/assets/images/profile/connect.svg"/></a>
+				{% endif %}
+				{% if post.irc %}
+				<a title="{{ post.irc }} on Freenode" href="irc://chat.freenode.net/{{ post.irc }},isnick" class="badge badge-dark"><img src="{{ site.baseurl }}/assets/images/profile/irc.svg"/> {{ post.irc }}</a>
+				{% endif %}
+				{% if post.gsoc %}
+				<a href="https://summerofcode.withgoogle.com/"><img title="Google Summer of Code" src="{{ site.baseurl }}/assets/images/profile/gsoc.svg"/></a>
+				{% endif %}
+				</div>
+			</div>
+			</div>
+			<div class="card-body">
+				<a href="{{ post.original_link }}">
+					<h2>{{ post.title }}</h2>
+				</a>
+				<p>{{ post.content }}</p>
+			</div>
+		</div>
+	</div>
+</div>

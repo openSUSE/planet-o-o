@@ -1,4 +1,6 @@
 _site/
+_posts/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
+planet.db

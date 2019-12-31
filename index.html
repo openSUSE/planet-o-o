@@ -1,0 +1,13 @@
+---
+layout: default
+---
+{% if paginator.page == 1 %}
+{% include main-info.html %}
+{% endif %}
+<div class="container my-3 p-0">
+	{% for post in paginator.posts %}
+	{% include calendar.html %}
+	{% include single-post.html %}
+	{% endfor %}
+	{% include pagination.html %}
+</div>

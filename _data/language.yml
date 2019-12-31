@@ -1,0 +1,33 @@
+en:
+  name: English
+  img: en.svg
+pl:
+  name: Polish
+  img: pl.svg
+fr:
+  name: French
+  img: fr.svg
+es:
+  name: Spanish
+  img: es.svg
+de:
+  name: German
+  img: de.svg
+cs:
+  name: Czech
+  img: cs.svg
+gr:
+  name: Greek
+  img: gr.svg
+id:
+  name: Indonesian
+  img: id.svg
+ja:
+  name: Japanese
+  img: ja.svg
+tw:
+  name: Taiwanese
+  img: tw.svg
+pt:
+  name: Portugese
+  img: pt.svg

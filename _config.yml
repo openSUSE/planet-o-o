@@ -1,0 +1,22 @@
+title: Planet openSUSE
+email: admin@opensuse.org
+description: >-
+  Planet openSUSE site providing newest news from the openSUSE Project
+baseurl: "/planet-o-o"
+url: "https://opensuse.github.io"
+
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-archives
+paginate: 10
+paginate_path: '/page:num/'
+
+jekyll-archives:
+  enabled: [tags]
+  layout: 'language'
+  permalinks:
+    tag: '/:name/'
+
+exclude: [README.md, Gemfile, Gemfile.lock, update.sh, planet.ini, planet.db]

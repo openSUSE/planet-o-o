@@ -1,0 +1,15 @@
+---
+layout: default
+---
+{% assign lang = site.data.language[page.title] %}
+<ol class="breadcrumb">
+	<li class="breadcrumb-item"><a href="{{ site.baseurl }}/"><span class="typcn typcn-world"></span> Planet openSUSE</a></li>
+	<li class="breadcrumb-item active text-truncate"><img class="border" src="{{ site.baseurl }}/assets/images/flags/{{ lang.img }}"/> {{ lang.name }}</li>
+</ol>
+<div class="container p-0">
+	{% for post in page.posts %}
+	{% include calendar.html %}
+	{% include single-post.html %}
+	{% endfor %}
+	{% include pagination.html %}
+</div>

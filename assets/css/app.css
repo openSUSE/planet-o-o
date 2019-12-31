@@ -1,0 +1,33 @@
+.card * {
+  max-width: 100%;
+}
+
+@media (min-width: 786px) {
+  .card-header::after, .card-header::before {
+    position: absolute;
+    top: 11px;
+    right: 100%;
+    left: -24px;
+    border-right-color: transparent;
+    border-style: solid solid outset;
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    content: " ";
+    border-color: transparent;
+  }
+
+  .card-header::before {
+    border-right-color: #e0e0e0;
+    border-width: 12px;
+  }
+
+  .card-header::after {
+    margin-top: 1px;
+    margin-left: 2.5px;
+    border-right-color: #f8f8f8;
+    border-width: 11px;
+  }
+}
