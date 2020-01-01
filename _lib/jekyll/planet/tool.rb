@@ -63,6 +63,8 @@ link:       #{item.feed.link}
 rss:        #{item.feed.feed}
 EOS
 
+frontmatter += "summary:    \"#{item.summary | xml_escape }\"\n" if item.summary && item.content
+
 frontmatter += "irc:        \"#{irc}\"\n" unless irc.nil?
 frontmatter += "connect:    \"#{connect}\"\n" unless connect.nil?
 frontmatter += "member:     #{member}\n" unless member.nil?
