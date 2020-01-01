@@ -5,8 +5,8 @@
 
   <title>Planet openSUSE</title>
   <subtitle>Planet openSUSE{% if lang.name %} | {{ lang.name }}{% endif %}</subtitle>
-  <icon></icon>
-  <logo></logo>
+  <icon>{{ site.baseurl }}/assets/icon.svg</icon>
+  <logo>{{ site.baseurl }}/assets/logo.svg</logo>
   <link href="https://planet.opensuse.org{% if lang.name %}/{{ page.title }}{% endif %}"/>
   <updated>{{ site.time | date_to_xmlschema }}</updated>
   <id>https://planet.opensuse.org/</id>
