@@ -1,0 +1,23 @@
+---
+layout: default
+language: true
+---
+{% assign lang = site.data.language[page.title] %}
+<ol class="breadcrumb align-items-center">
+	<li class="breadcrumb-item"><a href="{{ site.baseurl }}/"><span class="typcn typcn-world"></span> Planet openSUSE</a></li>
+	{% if paginator.page == 1 %}
+	<li class="breadcrumb-item active text-truncate"><img class="border" src="{{ site.baseurl }}/assets/images/flags/{{ lang.img }}"/> {{ lang.name }}</li>
+	{% else %}
+	<li class="breadcrumb-item active text-truncate"><a href="{{ site.baseurl }}/{{ page.title }}"><img class="border" src="{{ site.baseurl }}/assets/images/flags/{{ lang.img }}"/> {{ lang.name }}</a></li>
+	{% endif %}
+	<a href="{{ site.baseurl }}/{{ page.title }}/atom.xml" class="btn btn-danger btn-sm ml-auto">
+		<span title="Atom Feed" class="typcn typcn-rss"></span>
+	</a>
+</ol>
+<div class="container p-0">
+	{% for post in paginator.posts %}
+	{% include calendar.html %}
+	{% include single-post.html %}
+	{% endfor %}
+	{% include pagination.html %}
+</div>

@@ -1,0 +1,10 @@
+---
+layout: rss20
+permalink: /global/rss20.xml
+pagination:
+  enabled: true
+  collection: posts
+  sort_field: date
+  sort_reverse: true
+  limit: 1
+---

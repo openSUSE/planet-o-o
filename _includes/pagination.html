@@ -14,15 +14,13 @@
 			</span>
 		</li>
 		{% endif %}
-		{% for page in (1..paginator.total_pages) %}
-			{% if page == paginator.page %}
-			<li class="page-item active">
-				<span class="page-link">
-					{{ page }}
-				</span>
-			</li>
-			{% endif %}
-		{% endfor %}
+		{% if paginator.page_trail %}
+			{% for trail in paginator.page_trail %}
+				<li class="page-item{% if page.url == trail.path %} selected{% endif %}">
+					<a class="page-link" href="{{ trail.path | prepend: site.baseurl }}" title="{{trail.title}}">{{ trail.num }}</a>
+				</li>
+			{% endfor %}
+		{% endif %}
 		{% if paginator.next_page %}
 		<li class="page-item">
 			<a class="page-link" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">

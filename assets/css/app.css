@@ -31,3 +31,31 @@
     border-width: 11px;
   }
 }
+
+.roller-item {
+    max-height: 50vh;
+    transition: all .15s ease;
+    overflow: hidden;
+}
+.roller {
+    position: relative;
+    margin-bottom: 3rem;
+}
+.roller-label {
+    position: absolute;
+    top: 100%;
+}
+.roller-input {
+    display: none;
+}
+.roller-label:after {
+    content: "Show More";
+}
+.roller-input:checked + .roller-label:after {
+    content: "Show Less";
+}
+.roller-input:checked ~ .roller-item {
+    max-height: 100%;
+    transition: all .15s ease;
+    overflow: hidden;
+}

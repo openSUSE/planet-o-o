@@ -1,13 +1,22 @@
 ---
 layout: default
+pagination:
+  enabled: true
 ---
 {% if paginator.page == 1 %}
 {% include main-info.html %}
+{% else %}
+<ol class="breadcrumb align-items-center">
+	<li class="breadcrumb-item"><a href="{{ site.baseurl }}/"><span class="typcn typcn-world"></span> Planet openSUSE</a></li>
+	<a href="{{ site.baseurl }}/global/atom.xml" class="btn btn-danger btn-sm ml-auto">
+		<span title="Atom Feed" class="typcn typcn-rss"></span>
+	</a>
+</ol>
 {% endif %}
 <div class="container my-3 p-0">
 	{% for post in paginator.posts %}
 	{% include calendar.html %}
-	{% include single-post.html %}
+	{% include single-post.html language="true" %}
 	{% endfor %}
 	{% include pagination.html %}
 </div>

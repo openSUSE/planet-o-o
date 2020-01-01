@@ -1,0 +1,28 @@
+---
+---
+<?xml version="1.0" encoding="utf-8"?>{% assign lang = site.data.language[page.title] %}
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title>Planet openSUSE</title>
+  <subtitle>Planet openSUSE{% if lang.name %} | {{ lang.name }}{% endif %}</subtitle>
+  <icon></icon>
+  <logo></logo>
+  <link href="https://planet.opensuse.org{% if lang.name %}/{{ page.title }}{% endif %}"/>
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
+  <id>https://planet.opensuse.org/</id>
+  <generator>Pluto</generator>
+{% for post in paginator.posts %}
+  <entry>
+    <id>{{ post.guid }}</id>
+    <author>
+      <name>{{ post.author }}</name>
+      <uri>{{ post.link }}</uri>
+    </author>
+    <published>{{ post.created_at | date_to_xmlschema }}</published>
+    <updated>{{ post.updated_at | date_to_xmlschema }}</updated>
+    <title>{{ post.title }}</title>
+    <link href="{{ post.original_link }}"/>
+    <content type="html">{{ post.content | xml_escape }}</content>
+  </entry>
+{% endfor %}
+</feed>

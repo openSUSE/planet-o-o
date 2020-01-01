@@ -7,16 +7,28 @@ url: "https://opensuse.github.io"
 
 markdown: kramdown
 plugins:
-  - jekyll-feed
-  - jekyll-paginate
-  - jekyll-archives
-paginate: 10
-paginate_path: '/page:num/'
+  - jekyll-paginate-v2
 
-jekyll-archives:
-  enabled: [tags]
-  layout: 'language'
-  permalinks:
-    tag: '/:name/'
+autopages:
+  enabled: true
+  collections:
+    enabled: false
+  categories:
+    enabled: false
+  tags:
+    layouts:
+      - 'language.html'
+    title: ':tag'
+    permalink: '/:tag'
 
-exclude: [README.md, Gemfile, Gemfile.lock, update.sh, planet.ini, planet.db]
+pagination:
+  enabled: true
+  per_page: 10
+  permalink: '/:num/'
+  sort_reverse: true
+  sort_field: 'created_at'
+  trail:
+    before: 2
+    after: 2
+
+exclude: [README.md, Gemfile, Gemfile.lock, update.sh, planet.ini, planet.db, LICENSE]

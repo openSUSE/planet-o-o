@@ -31,3 +31,6 @@ tw:
 pt:
   name: Portugese
   img: pt.svg
+ru:
+  name: Russian
+  img: ru.svg

@@ -24,7 +24,7 @@ class Tool
 
     Pluto.connect( @db_config )
 
-    Pluto::Model::Item.latest.limit(200).each_with_index do |item,i|
+    Pluto::Model::Item.latest.limit(1000).each_with_index do |item,i|
       puts "[#{i+1}] #{item.title}"
   
       generate_blog_post( item )
@@ -55,6 +55,8 @@ class Tool
 ---
 title:      "#{item.title.gsub("\"","\\\"")}"
 created_at: #{item.published}
+updated_at: #{item.updated}
+guid:       #{item.guid}
 author:     #{item.feed.title}
 avatar:     #{item.feed.avatar}
 link:       #{item.feed.link}
@@ -67,7 +69,8 @@ frontmatter += "member:     #{member}\n" unless member.nil?
 frontmatter += "gsoc:       #{gsoc}\n" unless gsoc.nil?
 
 frontmatter +=<<EOS
-tags:       #{item.feed.location ? item.feed.location : "en"}
+tags:
+  - #{item.feed.location ? item.feed.location : "en"}
 original_link: "#{item.url unless item.url.empty?}"
 ---
 EOS
@@ -85,6 +88,7 @@ EOS
       else
         ## warn: not content found for feed
       end
+      # Liquid complains about curly braces
       html.gsub!("{", "&#123;")
       html.gsub!("{", "&#125;")
       f.write html

@@ -3,7 +3,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://static.opensuse.org/chameleon/dist/js/chameleon.js" type="text/javascript" charset="utf-8"></script>
-  {% if page.layout == 'language' %}
+  {% if page.language %}
   <title>{{ site.title | escape }} | {{ site.data.language[page.title].name }}</title>
   {% else %}
   <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>

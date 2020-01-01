@@ -1,0 +1,20 @@
+---
+---
+<?xml version="1.0"?>{% assign lang = site.data.language[page.title] %}
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Planet openSUSE</title>
+    <link>https://planet.opensuse.org{% if lang.name %}/{{ page.title }}{% endif %}</link>
+    <description>Planet openSUSE{% if lang.name %} | {{ lang.name }}{% endif %}</description>
+    <atom:link href="https://planet.opensuse.org{% if lang.name %}/{{ page.title }}{% endif %}/rss20.xml" rel="self" type="application/rss+xml"/>
+{% for post in paginator.posts %}
+    <item>
+      <guid isPermaLink="{% if post.guid contains '://' %}true{% else %}false{% endif %}">{{ post.guid }}</guid>
+      <title>{{ post.title }}</title>
+      <pubDate>{{ post.created_at }}</pubDate>
+      <link>{{ post.original_link }}</link>
+      <description>{{ post.content | xml_escape }}</description>
+    </item>
+{% endfor %}
+  </channel>
+</rss>

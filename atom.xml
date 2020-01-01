@@ -1,0 +1,10 @@
+---
+layout: atom
+permalink: /global/atom.xml
+pagination:
+  enabled: true
+  collection: posts
+  sort_field: date
+  sort_reverse: true
+  limit: 1
+---
