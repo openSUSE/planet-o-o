@@ -22,7 +22,19 @@ If you want to get your feed added, we prefer Pull Requests via GitHub.
              #   member
              #   gsoc
 ```
+
+(You can verify if your feed is properly formatted by running `./feedcheck feed_url`)
+
 * Upload your avatar to [hackergotchi directory](https://github.com/openSUSE/planet-o-o/blob/master/hackergotchi)
 * Send a Pull Request
 
 Alternatively you can send an email to admin@opensuse.org with all the mandatory information listed above
+
+## Development environment
+To run this website locally, use the following commands:
+```sh
+bundler install
+./update.sh
+bundler exec jekyll serve
+```
+and visit [127.0.0.1:4000](127.0.0.1:4000)
