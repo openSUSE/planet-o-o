@@ -7,7 +7,7 @@
     </div>
     <div class="row col-md-10 mx-auto">
       <div class="col-auto">
-        <img src="{{ site.baseurl }}/assets/images/planet.svg"/>
+        <img src="{{ site.baseurl }}/images/planet.svg"/>
       </div>
       <div class="col my-auto">
         <h2>Welcome to Planet openSUSE</h2>
@@ -16,7 +16,7 @@
       <div class="col-12 text-center">
       {% for tag in site.tags %}
       {% assign lang = site.data.language[tag.first] %}
-        <a title="{{ lang.name }}" href="{{ site.baseurl }}/{{ tag.first }}"><img class="border mx-3" src="{{ site.baseurl }}/assets/images/flags/{{ lang.img }}"/></a>
+        <a title="{{ lang.name }}" href="{{ site.baseurl }}/{{ tag.first }}"><img class="border mx-3" src="{{ site.baseurl }}/images/flags/{{ lang.img }}"/></a>
       {% endfor %}
       </div>
     </div>
