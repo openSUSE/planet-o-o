@@ -1,6 +1,8 @@
-_site/
-_posts/
-.sass-cache/
+.bundle/
 .jekyll-cache/
 .jekyll-metadata
 planet.db
+_posts/
+.sass-cache/
+_site/
+vendor/
