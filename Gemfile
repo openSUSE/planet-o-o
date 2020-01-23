@@ -1,5 +1,4 @@
 source "https://rubygems.org"
-gem 'bundler'
 gem 'jekyll'
 gem 'pluto'
 gem 'nokogiri'
