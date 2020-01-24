@@ -1,3 +1,2 @@
-pluto update planet.ini
-ruby -I './_lib/' -r 'jekyll/planet' -e 'JekyllPlanet.main'
-jekyll build
+bundler exec pluto update planet.ini
+bundler exec ruby -I './_lib/' -r 'jekyll/planet' -e 'JekyllPlanet.main'
