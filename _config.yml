@@ -31,4 +31,4 @@ pagination:
     before: 2
     after: 2
 
-exclude: [README.md, Gemfile, Gemfile.lock, update.sh, planet.ini, planet.db, LICENSE, feedcheck, vendor]
+exclude: [README.md, Gemfile, Gemfile.lock, update.sh, planet.ini, planet.db, LICENSE, feedcheck, vendor, tests]

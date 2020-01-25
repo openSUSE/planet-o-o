@@ -1,0 +1,13 @@
+os: linux
+dist: bionic
+language: ruby
+rvm:
+  - 2.6
+
+script:
+  - bundler exec ruby tests/feedcheck.rb
+jobs:
+  include:
+    - stage: test
+      script:
+        - bundler exec pluto update planet.ini
