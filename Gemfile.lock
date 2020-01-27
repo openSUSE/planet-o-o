@@ -25,6 +25,8 @@ GEM
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
     eventmachine (1.2.7)
+    faraday (1.0.0)
+      multipart-post (>= 1.2, < 3)
     feedfilter (1.1.1)
       textutils (>= 1.0.1)
     feedparser (2.1.1)
@@ -73,6 +75,7 @@ GEM
     mercenary (0.3.6)
     mini_portile2 (2.4.0)
     minitest (5.14.0)
+    multipart-post (2.1.1)
     nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
     pakman (1.1.0)
@@ -123,6 +126,7 @@ GEM
       activerecord
       props (>= 1.2.0)
     public_suffix (4.0.3)
+    rake (13.0.1)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -149,8 +153,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  faraday
   jekyll
   jekyll-paginate-v2
   nokogiri
   pluto
-
+  pluto-models
+  rake

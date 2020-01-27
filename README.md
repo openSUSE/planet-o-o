@@ -1,5 +1,7 @@
 # 🌎 [Planet openSUSE](https://planet.opensuse.org)
 
+[![CircleCI](https://circleci.com/gh/openSUSE/planet-o-o.svg?style=svg)](https://circleci.com/gh/openSUSE/planet-o-o) [![Build Status](https://travis-ci.com/openSUSE/planet-o-o.svg?branch=master)](https://travis-ci.com/openSUSE/planet-o-o)
+
 Planet openSUSE is a web feed aggregator that collects blog posts from people who contribute to openSUSE.
 
 ## Adding your feed
@@ -23,8 +25,6 @@ If you want to get your feed added, we prefer Pull Requests via GitHub.
              #   gsoc
 ```
 
-(You can verify if your feed is properly formatted by running `./feedcheck feed_url`)
-
 * Upload your avatar to [hackergotchi directory](https://github.com/openSUSE/planet-o-o/blob/master/hackergotchi)
 * Send a Pull Request
 
@@ -34,7 +34,7 @@ Alternatively you can send an email to admin@opensuse.org with all the mandatory
 To run this website locally, use the following commands:
 ```sh
 bundler install
-./update.sh
+bundler exec rake build
 bundler exec jekyll serve
 ```
-and visit [127.0.0.1:4000](127.0.0.1:4000)
+and visit [127.0.0.1:4000](http://127.0.0.1:4000)

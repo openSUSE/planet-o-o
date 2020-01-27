@@ -1,5 +1,5 @@
 Jekyll::Hooks.register :site, :post_read do |site|
-  site.posts.docs.map { |p| p.data['tags'] }.reduce(&:|).try[:each] do |tag|
+  site.posts.docs.map { |p| p.data['tags'] }.reduce(&:|)&.each do |tag|
     site.pages << TagFeed.new(site, site.source, tag, 'rss20', '.xml', 1)
     site.pages << TagFeed.new(site, site.source, tag, 'atom', '.xml', 1)
     # This will not be needed when the autopages are fixed

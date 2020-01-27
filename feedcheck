@@ -1,5 +1,0 @@
-#!/usr/bin/env ruby
-require 'nokogiri'
-require 'open-uri'
-
-puts Nokogiri::XML(open(ARGV.shift).read).errors
