@@ -15,4 +15,4 @@ jobs:
           command: bundler exec rake build
       - run: 
           name: Build Jekyll Website
-          command: bundler exec jekyll build
+          command: bundler exec jekyll build --trace

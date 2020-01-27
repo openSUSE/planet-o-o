@@ -32,7 +32,7 @@ Alternatively you can send an email to admin@opensuse.org with all the mandatory
 To run this website locally, use the following commands:
 ```sh
 bundler install
-./update.sh
+bundler exec rake build
 bundler exec jekyll serve
 ```
-and visit [127.0.0.1:4000](127.0.0.1:4000)
+and visit [127.0.0.1:4000](http://127.0.0.1:4000)
