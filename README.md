@@ -1,6 +1,6 @@
 # 🌎 [Planet openSUSE](https://planet.opensuse.org)
 
-[![CircleCI](https://circleci.com/gh/openSUSE/planet-o-o.svg?style=svg)](https://circleci.com/gh/openSUSE/planet-o-o)
+[![CircleCI](https://circleci.com/gh/openSUSE/planet-o-o.svg?style=svg)](https://circleci.com/gh/openSUSE/planet-o-o) [![Build Status](https://travis-ci.com/openSUSE/planet-o-o.svg?branch=master)](https://travis-ci.com/openSUSE/planet-o-o)
 
 Planet openSUSE is a web feed aggregator that collects blog posts from people who contribute to openSUSE.
 
