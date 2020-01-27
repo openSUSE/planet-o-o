@@ -126,6 +126,7 @@ GEM
       activerecord
       props (>= 1.2.0)
     public_suffix (4.0.3)
+    rake (13.0.1)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -157,4 +158,5 @@ DEPENDENCIES
   jekyll-paginate-v2
   nokogiri
   pluto
-
+  pluto-models
+  rake

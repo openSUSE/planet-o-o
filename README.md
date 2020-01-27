@@ -23,8 +23,6 @@ If you want to get your feed added, we prefer Pull Requests via GitHub.
              #   gsoc
 ```
 
-(You can verify if your feed is properly formatted by running `./feedcheck feed_url`)
-
 * Upload your avatar to [hackergotchi directory](https://github.com/openSUSE/planet-o-o/blob/master/hackergotchi)
 * Send a Pull Request
 

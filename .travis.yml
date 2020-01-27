@@ -10,4 +10,4 @@ jobs:
   include:
     - stage: test
       script:
-        - bundler exec pluto update planet.ini
+        - bundler exec rake test
