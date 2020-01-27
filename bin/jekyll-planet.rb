@@ -19,7 +19,7 @@ def run( args )
 
   Pluto.connect( @db_config )
 
-  Pluto::Model::Item.latest.limit(1000).each_with_index do |item,i|
+  Pluto::Model::Item.latest.where.not(title: '', published: nil).limit(1000).each_with_index do |item,i|
     puts "[#{i+1}] #{item.title}"
 
     generate_blog_post( item )
@@ -53,20 +53,20 @@ def generate_blog_post( item )
   # Check for author tags
 
   data = {}
-  data["title"] = item.title.gsub('"','\"')
-  data["created_at"] = item.published
-  data["updated_at"] = item.updated
-  data["guid"] = item.guid
-  data["author"] = item.feed.title
-  data["avatar"] = item.feed.avatar
-  data["link"] = item.feed.link
-  data["rss"] = item.feed.feed
+  data["title"] = item.title.gsub('"','\"') unless item.title.empty?
+  data["created_at"] = item.published if item.published
+  data["updated_at"] = item.updated if item.updated
+  data["guid"] = item.guid unless item.guid.empty?
+  data["author"] = item.feed.title unless item.feed.title.empty?
+  data["avatar"] = item.feed.avatar if item.feed.avatar
+  data["link"] = item.feed.link unless item.feed.link.empty?
+  data["rss"] = item.feed.feed unless item.feed.feed.empty?
   data["tags"] = [ item.feed.location ? item.feed.location : "en" ]
-  data["original_link"] = item.url unless item.url.empty?
+  data["original_link"] = item.url if item.url
   item.feed.author.split.each do |contact|
     if contact.include?(':')
       part = contact.split(':')
-      data[part.shift] = "\"#{part.join(':')}\""
+      data[part.shift] = part.join(':')
     else
       data[contact] = true
     end
