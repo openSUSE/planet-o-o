@@ -1,0 +1,21 @@
+version: 2.1 
+
+orbs:
+  ruby: circleci/ruby@0.1.2 # Ruby orb registry: https://circleci.com/orbs/registry/orb/circleci/ruby
+
+jobs: 
+  build: 
+    docker: 
+      - image: circleci/ruby:2.6.3-stretch-node
+    steps: 
+      - checkout
+      - ruby/bundle-install
+      - run: 
+          name: Build Pluto Database
+          command: bundler exec pluto update planet.ini
+      - run: 
+          name: Generate Jekyll Posts
+          command: bundler exec ruby -I './_lib/' -r 'jekyll/planet' -e 'JekyllPlanet.main'
+      - run: 
+          name: Build Jekyll Website
+          command: bundler exec jekyll build
