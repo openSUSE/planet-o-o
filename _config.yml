@@ -2,8 +2,8 @@ title: Planet openSUSE
 email: admin@opensuse.org
 description: >-
   Planet openSUSE site providing newest news from the openSUSE Project
-baseurl: "/planet-o-o"
-url: "https://opensuse.github.io"
+baseurl: ""
+url: "https://planet.opensuse.org"
 
 markdown: kramdown
 plugins:
@@ -31,4 +31,4 @@ pagination:
     before: 2
     after: 2
 
-exclude: [README.md, Gemfile, Gemfile.lock, planet.ini, planet.db, LICENSE, vendor, tests, bin]
+exclude: [README.md, Gemfile, Gemfile.lock, planet.ini, planet.db, LICENSE, vendor, tests, bin, Rakefile]
