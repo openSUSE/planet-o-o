@@ -3,5 +3,20 @@
     <img src="https://static.opensuse.org/chameleon/dist/images/logo/logo-white.svg" class="mr-2" alt="Logo">
     <span>Planet</span>
   </a>
-  <div class="ml-auto"></div>
+  <div class="mr-auto">
+    {%- if page.language -%}
+    {% assign lang = site.data.language[page.title] %}
+    <ul id="main-menu" class="navbar-nav mr-auto">
+	<li class="nav-item">
+	  <a class="nav-link{% if paginator.page == 1 %} active{% endif %}" href="{{ site.baseurl }}/{{ page.title }}">
+	    <img class="border h-50" src="{{ site.baseurl }}/images/flags/{{ lang.img }}"/> {{ lang.name }}</a>
+	</li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ site.baseurl }}/{{ page.title }}/atom.xml">
+	    <span title="Atom Feed" class="typcn typcn-rss"></span>
+          </a>
+        </li>
+    </ul>
+    {%- endif -%}
+  </div>
 </nav>
