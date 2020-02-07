@@ -4,6 +4,7 @@ description: >-
   Planet openSUSE site providing newest news from the openSUSE Project
 baseurl: ""
 url: "https://planet.opensuse.org"
+sourcecode: "https://github.com/openSUSE/planet-o-o"
 
 markdown: kramdown
 plugins:

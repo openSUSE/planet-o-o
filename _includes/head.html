@@ -29,6 +29,8 @@
   <meta name="twitter:url" content="{{ page.url | replace:'index.html','' | absolute_url }}" />
 
   <meta name="theme-color" content="#73ba25" />
+  <link rel="alternate" type="application/rss+xml" title="Planet openSUSE RSS" href="/{% if page.language %}{{ page.title }}{% else %}global{% endif %}/rss20.xml">
+  <link rel="alternate" type="application/atom+xml" title="Atom feed" href="/{% if page.language %}{{ page.title }}{% else %}global{% endif %}/atom.xml">
 
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}" />
 </head>
