@@ -20,8 +20,8 @@
     </author>
     <published>{{ post.created_at | date_to_xmlschema }}</published>
     <updated>{{ post.updated_at | date_to_xmlschema }}</updated>
-    <title>{{ post.title }}</title>
-    {% if post.summary %}<summary>{{ post.summary }}</summary>
+    <title>{{ post.title | xml_escape }}</title>
+    {% if post.summary %}<summary>{{ post.summary | xml_escape }}</summary>
     {% endif %}<link href="{{ post.original_link }}"/>
     <content type="html">{{ post.content | xml_escape }}</content>
   </entry>
