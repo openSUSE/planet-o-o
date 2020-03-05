@@ -39,7 +39,7 @@
 }
 .roller {
   position: relative;
-  margin-bottom: 3rem;
+  margin-bottom: 3rem!important;
 }
 .roller-label {
   position: absolute;
