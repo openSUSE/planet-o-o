@@ -10,6 +10,7 @@
 {% for post in paginator.posts %}
     <item>
       <guid isPermaLink="{% if post.guid contains '://' %}true{% else %}false{% endif %}">{{ post.guid }}</guid>
+      <author>{{ post.author }}</author>
       <title>{{ post.title | xml_escape }}</title>
       <pubDate>{{ post.created_at }}</pubDate>
       <link>{{ post.original_link }}</link>
