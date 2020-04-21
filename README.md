@@ -16,13 +16,13 @@ If you want to get your feed added, we prefer Pull Requests via GitHub.
   feed     = # url to your rss/atom feed                                (eg. https://openbuildservice.org/feed)
   link     = # link to the main page of your website                    (eg. https://openbuildservice.org)
   location = # two letter language code                                 (eg. en)
-  avatar   = # (optional) filename or url of your avatar                (eg. obs.png)
-  email    = # (optional) your contact email                            (eg. admin@opensuse.org)
-  author   = # (optional) includes various space separated tags about the author:
+  author   = # connect:openSUSE_nickname to contact you                 (eg. connect:obs)
+             # some other tags about the author are possible, all added space separated
              #   irc:freenode_nickname     (eg. irc:obs)
-             #   connect:openSUSE_nickname (eg. connect:obs)
              #   member
              #   gsoc
+  avatar   = # (optional) filename or url of your avatar                (eg. obs.png)
+  email    = # (optional) your contact email                            (eg. admin@opensuse.org)
 ```
 
 * Upload your avatar to [hackergotchi directory](https://github.com/openSUSE/planet-o-o/blob/master/hackergotchi)
