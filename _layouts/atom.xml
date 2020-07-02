@@ -1,13 +1,13 @@
 ---
 ---
-<?xml version="1.0" encoding="utf-8"?>{% assign lang = site.data.language[page.title] %}
+<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title>Planet openSUSE</title>
-  <subtitle>Planet openSUSE{% if lang.name %} | {{ lang.name }}{% endif %}</subtitle>
+  <subtitle>Planet openSUSE</subtitle>
   <icon>{{ site.baseurl }}/images/icon.svg</icon>
   <logo>{{ site.baseurl }}/images/logo.svg</logo>
-  <link href="https://planet.opensuse.org{% if lang.name %}/{{ page.title }}{% endif %}"/>
+  <link href="https://planet.opensuse.org"/>
   <updated>{{ site.time | date_to_xmlschema }}</updated>
   <id>https://planet.opensuse.org/</id>
   <generator>Pluto</generator>
