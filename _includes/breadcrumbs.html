@@ -1,0 +1,15 @@
+<ol class="breadcrumb">
+	<li class="breadcrumb-item">
+		<a href="{{ site.baseurl }}/">
+			{% if site.breadcrumb_icon %}
+			{{ site.breadcrumb_icon }}
+			{% endif %}
+			{{ site.title_short }}
+		</a>
+	</li>
+	<li class="breadcrumb-item active">
+		<a href="{{ page.url }}">
+			{{ page.title }}
+		</a>
+	</li>
+</ol>

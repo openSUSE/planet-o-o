@@ -1,11 +1,6 @@
 {% if post.previous == false or post.previous.date != post.date %}
-<div class="row mx-2 mb-3">
-	<div class="col-auto my-auto p-0 mr-2">
-		<img src="{{ site.baseurl }}/images/calendar/day-{{ post.date | date: "%d" }}.svg"/>
-	</div>
-	<div class="col p-0">
-		<h3 class="mb-0">{{ post.date | date: "%A" }}</h1>
-		<h4 class="mb-0">{{ post.date | date: "%-d %B, %Y" }}</h3>
-	</div>
-</div>
+<h3 class="text-center font-weight-bold">
+{% include icons/calendar.svg %}
+{{ post.date | date_to_string: "ordinal", "US" }}
+</h3>
 {% endif %}

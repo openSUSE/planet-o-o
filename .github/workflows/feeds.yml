@@ -1,0 +1,36 @@
+name: Jekyll Feed Tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install dependencies
+      uses: docker://ruby:2.7
+      env:
+        BUNDLE_PATH: .bundle
+      with:
+        entrypoint: bundle
+        args: install -j=4
+
+    - name: Run the tests
+      uses: docker://ruby:2.7
+      env:
+        BUNDLE_PATH: .bundle
+        LANG: en_US.UTF-8
+        LANGUAGE: en_US.UTF-8
+        LC_ALL: C.UTF-8
+      with:
+        entrypoint: bundle
+        args: exec rake test

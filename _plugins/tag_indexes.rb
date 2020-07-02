@@ -16,7 +16,8 @@ class TagFeed < Jekyll::Page
     self.read_yaml(File.join(base, '_layouts'), "#{feed}#{ext}")
     self.data['layout'] = feed
     self.data['permalink'] = "/#{Jekyll::Utils.slugify(tag)}/#{feed + ext unless limit != 1}"
-    self.data['title'] = tag
+    self.data['title'] = YAML.load_file('_data/language.yml')[tag]["name"]
+    self.data['language'] = tag
     self.data['pagination'] = {
       'enabled' => true,
       'sort_field' => 'created_at',
