@@ -1,6 +1,7 @@
 require 'iniparser'
 require 'faraday'
 require 'nokogiri'
+require 'uri'
 
 hash = INI.load_file( 'planet.ini' )
 av_dir = 'hackergotchi'
