@@ -4,7 +4,7 @@ email: admin@opensuse.org
 description: >-
   Planet openSUSE site providing newest news from the openSUSE Project
 copyright: '© 2011–2020 openSUSE contributors'
-# piwik_site_id:
+piwik_site_id: 53
 baseurl: ""
 url: "https://planet.opensuse.org"
 sourcecode: "https://github.com/openSUSE/planet-o-o"
