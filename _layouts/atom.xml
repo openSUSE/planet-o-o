@@ -2,27 +2,28 @@
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-
+{%- if page.language %}{% assign language = page.language %}{% else %}{% assign state = paginator.posts | first %}{% assign language = state.tags | first %}{% endif %}
   <title>Planet openSUSE</title>
   <subtitle>Planet openSUSE</subtitle>
   <icon>{{ site.baseurl }}/images/icon.svg</icon>
   <logo>{{ site.baseurl }}/images/logo.svg</logo>
-  <link href="https://planet.opensuse.org"/>
+  <link href="https://planet.opensuse.org/{{ language }}"/>
+  <link rel="self" href="https://planet.opensuse.org/{{ language }}/atom.xml"/>
   <updated>{{ site.time | date_to_xmlschema }}</updated>
-  <id>https://planet.opensuse.org/</id>
+  <id>https://planet.opensuse.org/{{ language }}</id>
   <generator>Pluto</generator>
 {% for post in paginator.posts %}
   <entry>
     <id>{{ post.guid }}</id>
     <author>
       <name>{{ post.author }}</name>
-      <uri>{{ post.link }}</uri>
+      <uri>{{ post.link | xml_escape }}</uri>
     </author>
     <published>{{ post.created_at | date_to_xmlschema }}</published>
     <updated>{{ post.updated_at | date_to_xmlschema }}</updated>
     <title>{{ post.title | xml_escape }}</title>
     {% if post.summary %}<summary>{{ post.summary | xml_escape }}</summary>
-    {% endif %}<link href="{{ post.original_link }}"/>
+    {% endif %}<link href="{{ post.original_link | xml_escape }}"/>
     <content type="html">{{ post.content | xml_escape }}</content>
   </entry>
 {% endfor %}

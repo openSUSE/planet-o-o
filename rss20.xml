@@ -1,6 +1,7 @@
 ---
 layout: rss20
 permalink: /global/rss20.xml
+language: global
 pagination:
   enabled: true
   collection: posts

@@ -1,6 +1,7 @@
 ---
 layout: atom
 permalink: /global/atom.xml
+language: global
 pagination:
   enabled: true
   collection: posts

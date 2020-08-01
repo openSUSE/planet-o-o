@@ -4,16 +4,17 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Planet openSUSE</title>
-    <link>https://planet.opensuse.org</link>
+{%- if page.language %}{% assign language = page.language %}{% else %}{% assign state = paginator.posts | first %}{% assign language = state.tags | first %}{% endif %}
+    <link>https://planet.opensuse.org/{{ language }}</link>
     <description>Planet openSUSE</description>
-    <atom:link href="https://planet.opensuse.org/global/rss20.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://planet.opensuse.org/{{ language }}/rss20.xml" rel="self" type="application/rss+xml"/>
 {% for post in paginator.posts %}
     <item>
       <guid isPermaLink="{% if post.guid contains '://' %}true{% else %}false{% endif %}">{{ post.guid }}</guid>
-      <author>{{ post.author }}</author>
+      <dc:creator>{{ post.author }}</dc:creator>
       <title>{{ post.title | xml_escape }}</title>
-      <pubDate>{{ post.created_at }}</pubDate>
-      <link>{{ post.original_link }}</link>
+      <pubDate>{{ post.created_at | date_to_rfc822 }}</pubDate>
+      <link>{{ post.original_link | xml_escape }}</link>
       <description>{{ post.content | xml_escape }}</description>
     </item>
 {% endfor %}
