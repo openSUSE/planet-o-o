@@ -89,10 +89,11 @@ GEM
       activerecord
       logutils (>= 0.6.1)
     mercenary (0.4.0)
-    mini_portile2 (2.5.0)
+    mini_portile2 (2.4.0)
     minitest (5.14.2)
     multipart-post (2.1.1)
-    nokogiri (1.10.10)
+    nokogiri (1.9.1)
+      mini_portile2 (~> 2.4.0)
     opmlparser (1.0.1)
     pakman (1.1.0)
       fetcher (>= 0.4.5)
@@ -172,8 +173,7 @@ DEPENDENCIES
   jekyll
   jekyll-paginate-v2
   jekyll-theme-opensuse!
-  mini_portile2
-  nokogiri
+  nokogiri (~> 1.9.0)
   pluto
   pluto-models
   rake
