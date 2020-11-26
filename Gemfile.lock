@@ -92,6 +92,7 @@ GEM
     minitest (5.14.2)
     multipart-post (2.1.1)
     nokogiri (1.10.10)
+      mini_portile2 (~> 2.4.0)
     opmlparser (1.0.1)
     pakman (1.1.0)
       fetcher (>= 0.4.5)
