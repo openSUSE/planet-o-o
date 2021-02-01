@@ -89,11 +89,12 @@ GEM
       activerecord
       logutils (>= 0.6.1)
     mercenary (0.4.0)
-    mini_portile2 (2.4.0)
+    mini_portile2 (2.5.0)
     minitest (5.14.2)
     multipart-post (2.1.1)
-    nokogiri (1.10.10)
-      mini_portile2 (~> 2.4.0)
+    nokogiri (1.11.0)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
     opmlparser (1.0.1)
     pakman (1.1.0)
       fetcher (>= 0.4.5)
@@ -140,6 +141,7 @@ GEM
       activerecord
       props (>= 1.2.0)
     public_suffix (4.0.6)
+    racc (1.5.2)
     rake (13.0.1)
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
@@ -173,7 +175,7 @@ DEPENDENCIES
   jekyll
   jekyll-paginate-v2
   jekyll-theme-opensuse!
-  nokogiri (~> 1.10.10)
+  nokogiri (~> 1.11.0)
   pluto
   pluto-models
   rake
