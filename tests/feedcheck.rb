@@ -20,7 +20,10 @@ hash.each do |key, section|
     if avatar.include? '//'
       url_arr << avatar
     else
-      abort("✗\nAvatar not found: hackergotchi/#{avatar}") unless File.file?("#{av_dir}/#{avatar}")
+      unless File.file?("#{av_dir}/#{avatar}")
+        print "✗\nAvatar not found: hackergotchi/#{avatar}"
+        abort
+      end
       avatars << avatar
     end if avatar
     print '✓ '
@@ -28,14 +31,23 @@ hash.each do |key, section|
     url_arr.each do |url|
       res = Faraday.get(URI(url))
       error = "✗\nNon successful status code #{res.status} when trying to access `#{url}`"
-      abort("#{error}\nTry using `#{res.headers['location']}` instead") if res.status.to_i.between?(300, 399) && res.headers.has_key?('location')
-      abort(error) unless res.status.to_i == 200
+      if res.status.to_i.between?(300, 399) && res.headers.has_key?('location')
+        print "#{error}\nTry using `#{res.headers['location']}` instead"
+        abort
+      end
+      unless res.status.to_i == 200
+        print error
+        abort
+      end
     end
     print '✓ '
     # Check is the XML actually parses as XML
     xml = Faraday.get(URI(feed)).body
     xml_err = Nokogiri::XML(xml).errors
-    abort("✗\nUnusable XML syntax: #{feed}\n#{xml_err}") unless xml_err.empty?
+    unless xml_err.empty?
+      print "✗\nUnusable XML syntax: #{feed}\n#{xml_err}"
+      abort
+    end
     puts '✓ '
   end
 end
@@ -44,4 +56,7 @@ avatars << "default.png"
 avatars.uniq!
 hackergotchis = Dir.foreach(av_dir).select { |f| File.file?("#{av_dir}/#{f}") }
 diff = (hackergotchis - avatars).sort
-abort "There are unused files in hackergotchis:\n#{diff.join(', ')}" unless diff.empty?
+unless diff.empty?
+  print "There are unused files in hackergotchis:\n#{diff.join(', ')}"
+  abort
+end
