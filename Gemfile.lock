@@ -26,7 +26,7 @@ GEM
       zeitwerk (~> 2.3)
     activityutils (0.1.2)
       logutils (>= 0.6.1)
-    addressable (2.7.0)
+    addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     colorator (1.1.0)
     concurrent-ruby (1.1.8)
