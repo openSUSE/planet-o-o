@@ -2,7 +2,7 @@ source "https://rubygems.org"
 gem 'jekyll'
 gem 'pluto'
 gem 'pluto-models'
-gem 'nokogiri', '~> 1.11.4'
+gem 'nokogiri', '>= 1.11.4'
 gem 'faraday'
 gem 'rake'
 gem 'jekyll-paginate-v2'
