@@ -23,6 +23,7 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+      zeitwerk (~> 2.3)
     activityutils (0.1.2)
       logutils (>= 0.6.1)
     addressable (2.8.0)
@@ -179,6 +180,7 @@ GEM
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (1.8.0)
+    zeitwerk (2.5.1)
 
 PLATFORMS
   ruby
