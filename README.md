@@ -16,7 +16,7 @@ If you want to get your feed added, we prefer Pull Requests via GitHub.
   location = # two letter language code                                 (eg. en)
   author   = # connect:openSUSE_nickname to contact you                 (eg. connect:obs)
              # some other tags about the author are possible, all added space separated
-             #   irc:freenode_nickname     (eg. irc:obs)
+             #   irc:libera_nickname     (eg. irc:obs)
              #   member
              #   gsoc
   avatar   = # (optional) filename or url of your avatar                (eg. obs.png)
