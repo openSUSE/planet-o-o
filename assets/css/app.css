@@ -63,3 +63,21 @@
 .avatar {
   width: calc(100% - 1rem);
 }
+
+@media (prefers-color-scheme: dark) {
+  .bg-light {
+    background-color: #343a40!important
+  }
+
+  .border-bottom {
+    border-color: #495057!important
+  }
+
+  .card-header::before {
+    border-right-color: #495057
+  }
+
+  .card-header::after {
+    border-right-color: #343a40
+  }
+}
