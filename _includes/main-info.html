@@ -8,7 +8,7 @@
         <img class="mx-auto" src="{{ site.baseurl }}/assets/images/logo.svg"/>
       </div>
       <div class="col-md my-auto">
-        <h2>{% if page.locale.id == 'all' %}{{ locale.welcome }}{% else %}{{ locale.welcome_lang }}{% endif %}</h2>
+        <h2>{% if page.locale.name == 'Global' %}{{ locale.welcome }}{% else %}{{ locale.welcome_lang }}{% endif %}</h2>
         {% capture project %}
           <a href="https://opensuse.org">{{ locale.subtitle_project }}</a>
         {% endcapture %}
