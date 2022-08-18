@@ -1,17 +1,23 @@
-<div class="py-3 mb-3 border-bottom bg-light">
+<div class="py-3 mb-3 border-bottom bg-light map-container">
+  <div class="map">
+    {% include map.svg %}
+  </div>
   <div class="container">
     <div class="row col-md-10 mx-auto">
       <div class="col-md-auto d-flex">
-        <img class="mx-auto" src="{{ site.baseurl }}/assets/images/planet.svg"/>
+        <img class="mx-auto" src="{{ site.baseurl }}/assets/images/logo.svg"/>
       </div>
       <div class="col-md my-auto">
-        <h2>Welcome to Planet openSUSE</h2>
-        <h5>This is a feed aggregator that collects what the contributors to the <a href="https://opensuse.org">openSUSE Project</a> are writing on their respective blogs</h5>
+        <h2>{% if page.locale.id == 'all' %}{{ locale.welcome }}{% else %}{{ locale.welcome_lang }}{% endif %}</h2>
+        {% capture project %}
+          <a href="https://opensuse.org">{{ locale.subtitle_project }}</a>
+        {% endcapture %}
+        <h5>{{ locale.subtitle | replace: '$project', project }}</h5>
       </div>
       <div class="col-12 text-center">
       {% assign sorted = site.tags | sort %}
       {% for tag in sorted %}
-      {% assign lang = site.data.language[tag.first] %}
+      {% assign lang = site.localization.locales_set[tag.first] %}
         <a class="mx-2" href="{{ site.baseurl }}/{{ tag.first }}/">{{ lang.name }}</a>
       {% endfor %}
       </div>
@@ -20,6 +26,9 @@
 </div>
 <div class="container">
   <div class="row col-md-10 mx-auto">
-    <div class="alert alert-info w-100">To have your blog added to this aggregator, please read <a href="https://en.opensuse.org/openSUSE:Planet">the instructions</a></div>
+    {% capture instructions %}
+    <a href="https://en.opensuse.org/openSUSE:Planet">{{ locale.addnotice_instructions }}</a>
+    {% endcapture %}
+    <div class="alert alert-info w-100">{{ locale.addnotice | replace: '$instructions', instructions }}</div>
   </div>
 </div>

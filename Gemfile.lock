@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/opensuse/jekyll-theme.git
-  revision: cd9f09233373db2bda95e1324a37c1fe54f19a55
+  revision: 9327ee3794c9dddde49b9f7c25db95a281c9a551
+  branch: l10n-feat
   specs:
     jekyll-theme-opensuse (0.7.1)
       jekyll
@@ -35,10 +36,10 @@ GEM
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0)
     eventmachine (1.2.7)
-    faraday (2.3.0)
-      faraday-net_http (~> 2.0)
+    faraday (2.5.2)
+      faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
-    faraday-net_http (2.0.3)
+    faraday-net_http (3.0.0)
     feedfilter (1.1.1)
       textutils (>= 1.0.1)
     feedparser (2.2.0)
@@ -90,12 +91,8 @@ GEM
       activerecord
       logutils (>= 0.6.1)
     mercenary (0.4.0)
-    mini_portile2 (2.8.0)
-    minitest (5.16.2)
-    nokogiri (1.13.7)
-      mini_portile2 (~> 2.8.0)
-      racc (~> 1.4)
-    nokogiri (1.13.7-x86_64-linux)
+    minitest (5.16.3)
+    nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
     opmlparser (1.0.1)
     pakman (1.1.0)
@@ -149,7 +146,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rexml (3.2.5)
-    rouge (3.29.0)
+    rouge (3.30.0)
     rss (0.2.9)
       rexml
     ruby2_keywords (0.0.5)
@@ -168,10 +165,10 @@ GEM
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unicode-display_width (1.8.0)
+    webrick (1.7.0)
     zeitwerk (2.6.0)
 
 PLATFORMS
-  ruby
   x86_64-linux
 
 DEPENDENCIES
@@ -185,6 +182,7 @@ DEPENDENCIES
   pluto-models
   rake
   rss
+  webrick
 
 BUNDLED WITH
-   2.2.6
+   2.3.16

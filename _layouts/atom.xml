@@ -2,15 +2,15 @@
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-{%- if page.language %}{% assign language = page.language %}{% else %}{% assign state = paginator.posts | first %}{% assign language = state.tags | first %}{% endif %}
-  <title>Planet openSUSE</title>
-  <subtitle>Planet openSUSE</subtitle>
-  <icon>{{ site.baseurl }}/images/icon.svg</icon>
-  <logo>{{ site.baseurl }}/images/logo.svg</logo>
-  <link href="https://planet.opensuse.org/{{ language }}"/>
-  <link rel="self" href="https://planet.opensuse.org/{{ language }}/atom.xml"/>
+{%- if page.locale.name == 'Global' %}{% assign lang_id = '/' %}{% else %}{% assign lang_id = page.locale.id | append: '/' %}{% endif %}
+  <title>{{ locale[site.title] }} - {{ page.locale.name }}</title>
+  <subtitle>{{ locale[site.description] }}</subtitle>
+  <icon>{{ '/images/icon.svg' | absolute_url }}</icon>
+  <logo>{{ '/images/logo.svg' | absolute_url }}</logo>
+  <link href="{{ lang_id | absolute_url }}"/>
+  <link rel="self" href="{{ lang_id | append: 'atom.xml' | absolute_url }}"/>
   <updated>{{ site.time | date_to_xmlschema }}</updated>
-  <id>https://planet.opensuse.org/{{ language }}</id>
+  <id>{{ lang_id | absolute_url }}</id>
   <generator>Pluto</generator>
 {% for post in paginator.posts %}
   <entry>

@@ -3,11 +3,12 @@
 <?xml version="1.0"?>
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Planet openSUSE</title>
-{%- if page.language %}{% assign language = page.language %}{% else %}{% assign state = paginator.posts | first %}{% assign language = state.tags | first %}{% endif %}
-    <link>https://planet.opensuse.org/{{ language }}</link>
-    <description>Planet openSUSE</description>
-    <atom:link href="https://planet.opensuse.org/{{ language }}/rss20.xml" rel="self" type="application/rss+xml"/>
+    <title>{{ locale[site.title] }} - {{ page.locale.name }}</title>
+{%- if page.locale.name == 'Global' %}{% assign lang_id = 'global/' %}{% else %}{% assign lang_id = page.locale.id | append: '/' %}{% endif %}
+    <link>{{ lang_id | absolute_url }}</link>
+    <description>{{ locale[site.description] }}</description>
+    <atom:link href="{{ lang_id | append: 'rss20.xml' | absolute_url }}" rel="self" type="application/rss+xml"/>
+    <atom:link href="{{ lang_id | append: 'atom.xml' | absolute_url }}" type="application/atom+xml"/>
 {% for post in paginator.posts %}
     <item>
       <guid isPermaLink="{% if post.guid contains '://' %}true{% else %}false{% endif %}">{{ post.guid }}</guid>

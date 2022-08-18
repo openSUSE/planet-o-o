@@ -1,1 +1,1 @@
-<img height="{{include.height}}" class="{{include.class}}" src="{% if post.avatar contains '://' %}{% elsif post.avatar %}{{ site.baseurl }}/hackergotchi/{% else %}{{ site.baseurl }}/hackergotchi/default.png{% endif %}{{ post.avatar }}"/>
+<img height="{{include.height}}" width="{{include.width}}" class="{{include.class}}" src="{% if post.avatar contains '://' %}{% elsif post.avatar %}{{ site.baseurl }}/hackergotchi/{% else %}{{ site.baseurl }}/hackergotchi/default.png{% endif %}{{ post.avatar }}"/>

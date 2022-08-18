@@ -3,6 +3,20 @@
   height: auto;
 }
 
+.map-container {
+  position: relative;
+  overflow: hidden;
+}
+
+
+.map {
+  position: absolute;
+  opacity: 10%;
+  width: calc(100% + 600px);
+  left: -300px;
+  top: 0;
+}
+
 @media (min-width: 786px) {
   .card-header::after, .card-header::before {
     position: absolute;
@@ -31,6 +45,12 @@
     border-right-color: #f8f8f8;
     border-width: 11px;
   }
+
+  .map {
+    width: calc(100% + 400px);
+    left: -200px;
+    top: -100px;
+  }
 }
 
 .roller-item {
@@ -49,11 +69,17 @@
 .roller-input {
   display: none;
 }
-.roller-label:after {
-  content: "Show More";
+.roller-label .show-less {
+  display: none;
 }
-.roller-input:checked + .roller-label:after {
-  content: "Show Less";
+.roller-label .show-more {
+  display: block;
+}
+.roller-input:checked + .roller-label .show-less {
+  display: block;
+}
+.roller-input:checked + .roller-label .show-more {
+  display: none;
 }
 .roller-input:checked ~ .roller-item {
   max-height: 100%;
