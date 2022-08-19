@@ -40,8 +40,8 @@ end
 
 def fix_up_title(title, content)
   title = Nokogiri::HTML::Document.parse(content).search('//text()').first if content
-  title = item.title.slice(0..(item.title.index('.'))) if item.title
-  title = item.title.slice(0..255) if item.title
+  title = title.to_s.slice(0..(title.to_s.index('.'))) if title
+  title = title.to_s.slice(0..255) if title
   title
 end
 
@@ -89,7 +89,7 @@ def generate_blog_post(item)
       data[contact] = true
     end
   end
-  data['original_link'] == data['link'] + data['original_link'] unless data['original_link'].include?('//')
+  data['original_link'] = URI.join(data['link'], data['original_link']).to_s unless data['original_link'].include?('//')
   frontmatter = generate_frontmatter(data)
 
   File.open(fn, 'w') do |f|
