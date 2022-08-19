@@ -11,18 +11,29 @@ end
 # Generate a paginated tag feed
 class TagFeed < Jekyll::Page
   def initialize(site, base, tag, feed, ext)
+    super(site, base, '_layouts/', "#{feed}#{ext}")
     @site = site
     @name = "_layouts/#{feed}#{ext}"
     @ext = ext
     @relative_path = "/#{Jekyll::Utils.slugify(tag)}/#{feed + ext}"
     config = site.config['localization']['locales_set']
-
     read_yaml(File.join(base, '_layouts'), "#{feed}#{ext}")
+    page_data(data, tag, feed, ext, config)
+  end
+
+  private
+
+  def page_data(data, tag, feed, ext, config)
     data['layout'] = feed
     data['permalink'] = "/#{Jekyll::Utils.slugify(tag)}/"
     data['title'] = config[tag]['name']
     data['language'] = tag
-    data['pagination'] = {
+    data['pagination'] = pagination(tag, feed, ext, config)
+    data['locale'] = { 'id' => tag, 'name' => config[tag]['name'] }
+  end
+
+  def pagination(tag, feed, ext, config)
+    {
       'enabled' => true,
       'sort_field' => 'created_at',
       'sort_reverse' => true,
@@ -32,7 +43,6 @@ class TagFeed < Jekyll::Page
       'extension' => ext.sub('.', ''),
       'title' => config[tag]['name']
     }
-    data['locale'] = { 'id' => tag, 'name' => config[tag]['name'] }
   end
 end
 
