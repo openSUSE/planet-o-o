@@ -57,7 +57,7 @@ localization:
       name: Čeština
     de:
       name: Deutsch
-    gr:
+    el:
       name: Ελληνικά
     en:
       name: English
@@ -73,7 +73,7 @@ localization:
       name: Português
     ru:
       name: Русский
-    tw:
+    zh_TW:
       name: 繁體中文
 
 exclude: [README.md, Gemfile, Gemfile.lock, planet.ini, planet.db, LICENSE, vendor, tests, bin, Rakefile]
