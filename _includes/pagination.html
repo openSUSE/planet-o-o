@@ -1,0 +1,27 @@
+{% if paginator.total_pages > 1 %}
+<div class="col-12 p-3 d-flex">
+	<ul class="pagination mx-auto my-0">
+		{% if paginator.previous_page %}
+		<li class="page-item">
+			<a class="page-link" href="{{ paginator.previous_page_path | relative_url }}">
+				&laquo;
+			</a>
+		</li>
+		{% endif %}
+		{% if paginator.page_trail %}
+			{% for trail in paginator.page_trail %}
+			<li class="page-item{% if page.url == trail.path %} active{% endif %}">
+				<a class="page-link" href="{{ trail.path | relative_url }}">{{ trail.num }}</a>
+			</li>
+			{% endfor %}
+		{% endif %}
+		{% if paginator.next_page %}
+		<li class="page-item">
+			<a class="page-link" href="{{ paginator.next_page_path | relative_url }}">
+				&raquo;
+			</a>
+		</li>
+		{% endif %}
+	</ul>
+</div>
+{% endif %}

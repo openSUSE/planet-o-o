@@ -1,6 +1,6 @@
 ---
 layout: rss20
-permalink: /global/rss20.xml
+permalink: /global/
 language: global
 pagination:
   enabled: true
@@ -8,4 +8,6 @@ pagination:
   sort_field: date
   sort_reverse: true
   limit: 1
+  indexpage: rss20
+  extension: xml
 ---

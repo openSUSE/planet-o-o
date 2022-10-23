@@ -1,0 +1,61 @@
+site_title: openSUSE Planet
+site_title_short: Planet
+site_description: Planet openSUSE site providing newest news from the openSUSE Project
+site_copyright: © 2011-2022 openSUSE contributors
+
+search: Search
+categories: Categories
+tags: Tags
+new_post: New Post
+translate: Translate
+subscribe: Subscribe
+
+postedat: $author posted at $time
+postedinat: $author posted in $language at $time
+showmore: Show More
+showless: Show Less
+add_your_blog: Add your blog
+atom_feed: Atom Feed
+rss_feed: RSS 2.0 Feed
+
+welcome: Welcome to Planet openSUSE
+# TRANSLATORS: Replace English with your language name in the translation
+welcome_lang: Welcome to English Planet openSUSE
+
+subtitle: This is a feed aggregator that collects what the contributors to the $project are writing on their respective blogs
+subtitle_project: openSUSE Project
+
+addnotice: To have your blog added to this aggregator, please read $instructions
+addnotice_instructions: the instructions
+
+page: Page $number
+
+source_code: Source Code
+license: License
+
+locale_date:
+  date:
+    abbr_day_names:
+      - Sun
+      - Mon
+      - Tue
+      - Wed
+      - Thu
+      - Fri
+      - Sat
+    abbr_month_names:
+      - ''
+      - Jan
+      - Feb
+      - Mar
+      - Apr
+      - May
+      - Jun
+      - Jul
+      - Aug
+      - Sep
+      - Oct
+      - Nov
+      - Dec
+    formats:
+      default: "%a, %b %d, %Y"

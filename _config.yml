@@ -1,9 +1,8 @@
-title: Planet openSUSE
-title_short: Planet
+title: site_title
+title_short: site_title_short
 email: admin@opensuse.org
-description: >-
-  Planet openSUSE site providing newest news from the openSUSE Project
-copyright: '© 2011–2020 openSUSE contributors'
+description: site_description
+copyright: site_copyright
 piwik_site_id: 53
 baseurl: ""
 url: "https://planet.opensuse.org"
@@ -16,9 +15,17 @@ plugins:
 
 navbar_links:
   -
-    icon: <svg class="bi bi-bell" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2z"/><path fill-rule="evenodd" d="M8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/></svg>
+    link: https://en.opensuse.org/openSUSE:Planet
+    text: add_your_blog
+  -
+    icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M3 17a4 4 0 0 1 4 4H3v-4zm0-7c6.075 0 11 4.925 11 11h-2a9 9 0 0 0-9-9v-2zm0-7c9.941 0 18 8.059 18 18h-2c0-8.837-7.163-16-16-16V3z" fill="currentColor"/></svg>
+    link: /global/atom.xml
+    text: atom_feed
+  -
+    icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M3 17a4 4 0 0 1 4 4H3v-4zm0-7c6.075 0 11 4.925 11 11h-2a9 9 0 0 0-9-9v-2zm0-7c9.941 0 18 8.059 18 18h-2c0-8.837-7.163-16-16-16V3z" fill="currentColor"/></svg>
     link: /global/rss20.xml
-    text: RSS Feed
+    text: rss_feed
+  - locales
 
 breadcrumb_icon: |
   <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-globe" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -27,23 +34,11 @@ breadcrumb_icon: |
 
 footer_links:
   -
-    text: Source Code
+    text: source_code
     link: https://github.com/openSUSE/planet-o-o
   -
-    text: License
+    text: license
     link: https://github.com/openSUSE/planet-o-o/blob/master/LICENSE
-
-autopages:
-  enabled: true
-  collections:
-    enabled: false
-  categories:
-    enabled: false
-  tags:
-    layouts:
-      - 'language.html'
-    title: ':tag'
-    permalink: '/:tag'
 
 pagination:
   enabled: true
@@ -54,5 +49,31 @@ pagination:
   trail:
     before: 2
     after: 2
+
+localization:
+  locale     : en
+  locales_set:
+    cs:
+      name: Čeština
+    de:
+      name: Deutsch
+    el:
+      name: Ελληνικά
+    en:
+      name: English
+    es:
+      name: Español
+    fr:
+      name: Français
+    id:
+      name: Indonesia
+    ja:
+      name: 日本語
+    pt:
+      name: Português
+    ru:
+      name: Русский
+    zh_TW:
+      name: 繁體中文
 
 exclude: [README.md, Gemfile, Gemfile.lock, planet.ini, planet.db, LICENSE, vendor, tests, bin, Rakefile]

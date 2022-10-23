@@ -4,12 +4,16 @@
 			{% if site.breadcrumb_icon %}
 			{{ site.breadcrumb_icon }}
 			{% endif %}
-			{{ site.title_short }}
+			{{ locale[site.title_short] }}
+		</a>
+	</li>
+	<li class="breadcrumb-item">
+		{% if page.locale.name == 'Global' %}{% assign lang_id = '/' %}{% else %}{% assign lang_id = page.locale.id | append: '/' %}{% endif %}
+		<a href="{{ lang_id  | absolute_url }}">
+			{{ page.locale.name }}
 		</a>
 	</li>
 	<li class="breadcrumb-item active">
-		<a href="{{ page.url }}">
-			{{ page.title }}
-		</a>
+		{{ locale.page | replace: '$number', paginator.page }}
 	</li>
 </ol>

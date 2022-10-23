@@ -13,7 +13,7 @@ If you want to get your feed added, we prefer Pull Requests via GitHub.
   title    = # title of your feed                                       (eg. Open Build Service)
   feed     = # url to your rss/atom feed                                (eg. https://openbuildservice.org/feed)
   link     = # link to the main page of your website                    (eg. https://openbuildservice.org)
-  location = # two letter language code                                 (eg. en)
+  location = # ISO_639 language code (may include ISO 3166 country code)(eg. zh_TW)
   author   = # connect:openSUSE_nickname to contact you                 (eg. connect:obs)
              # some other tags about the author are possible, all added space separated
              #   irc:libera_nickname     (eg. irc:obs)

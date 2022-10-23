@@ -1,7 +1,19 @@
 ---
 layout: default
 ---
+<link rel="alternate" type="application/rss+xml" title="{{ locale[site.title] }} - {{ page.locale.name }}" href="{{ page.locale.id | append: '/rss20.xml' | absolute_url  }}">
+<link rel="alternate" type="application/atom+xml" title="{{ locale[site.title] }} - {{ page.locale.name }}" href="{{ page.locale.id | append: '/atom.xml' | absolute_url  }}">
+<script>
+// Replace rss and atom links with the local versions
+var header_links = document.querySelectorAll('.nav-link');
+header_links[1].href = "{{ page.locale.id | append: '/atom.xml' | absolute_url  }}";
+header_links[2].href = "{{ page.locale.id | append: '/rss20.xml' | absolute_url  }}";
+</script>
+{% if paginator.page == 1 %}
+{% include main-info.html %}
+{% else %}
 {% include breadcrumbs.html %}
+{% endif %}
 <div class="container my-4 p-0">
 	{% for post in paginator.posts %}
 	{% include calendar.html %}

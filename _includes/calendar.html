@@ -1,6 +1,13 @@
-{% if post.previous == false or post.previous.date != post.date %}
+{% assign previous_index = forloop.index | minus: 2 %}
+{% assign previous_date = paginator.posts[previous_index].created_at | date: '%D' %}
+{% assign current_date = post.created_at | date: '%D' %}
+{% if forloop.first == post or previous_date != current_date %}
 <h3 class="text-center font-weight-bold">
 {% include icons/calendar.svg %}
-{{ post.date | date_to_string: "ordinal", "US" }}
+{% if page.locale.id == 'en' %}
+  {{ post.created_at | date: '%a' }}, {{ post.created_at | date_to_string: "ordinal", "US" }}
+{% else %}
+  {{ post.created_at | localize_date }}
+{% endif %}
 </h3>
 {% endif %}
