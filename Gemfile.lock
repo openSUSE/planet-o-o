@@ -187,6 +187,3 @@ DEPENDENCIES
   rake
   rss
   webrick
-
-BUNDLED WITH
-   2.3.16
