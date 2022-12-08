@@ -93,10 +93,10 @@ GEM
     mercenary (0.4.0)
     mini_portile2 (2.8.0)
     minitest (5.16.2)
-    nokogiri (1.13.9)
+    nokogiri (1.13.10)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    nokogiri (1.13.9-x86_64-linux)
+    nokogiri (1.13.10-x86_64-linux)
       racc (~> 1.4)
     opmlparser (1.0.1)
     pakman (1.1.0)
@@ -144,7 +144,7 @@ GEM
       activerecord
       props (>= 1.2.0)
     public_suffix (4.0.7)
-    racc (1.6.0)
+    racc (1.6.1)
     rake (13.0.6)
     rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
@@ -173,6 +173,7 @@ GEM
     zeitwerk (2.6.0)
 
 PLATFORMS
+  ruby
   x86_64-linux
 
 DEPENDENCIES
