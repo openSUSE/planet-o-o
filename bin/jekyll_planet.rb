@@ -101,7 +101,7 @@ def generate_blog_post(item)
     html = Nokogiri::HTML::DocumentFragment.parse(content).to_html
     # Liquid complains about curly braces
     html.gsub!('{', '&#123;')
-    html.gsub!('{', '&#125;')
+    html.gsub!('}', '&#125;')
     html.gsub!(%r{(?<=src=["'])/(?!/)}, "#{%r{//.*?(?=/|$)}.match(item.feed.link)[0]}/")
     html.gsub!(/(?<=src=["'])https?:/, '')
     f.write html
