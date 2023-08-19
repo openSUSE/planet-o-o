@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-gem 'activerecord', '< 7.0'
+gem 'activerecord'#, '< 7.0'
 gem 'faraday'
 gem 'jekyll'
 gem 'jekyll-paginate-v2'

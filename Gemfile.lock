@@ -162,8 +162,6 @@ GEM
     sass-embedded (1.63.6)
       google-protobuf (~> 3.23)
       rake (>= 13.0.0)
-    sass-embedded (1.63.6-x86_64-linux-gnu)
-      google-protobuf (~> 3.23)
     sqlite3 (1.6.3)
       mini_portile2 (~> 2.8.0)
     sqlite3 (1.6.3-x86_64-linux)
@@ -185,7 +183,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  activerecord (< 7.0)
+  activerecord
   faraday
   jekyll
   jekyll-paginate-v2
