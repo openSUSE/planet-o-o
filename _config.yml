@@ -1,11 +1,11 @@
 title: site_title
 title_short: site_title_short
-email: admin@opensuse.org
+email: ntc@dsacommittees.org
 description: site_description
 copyright: site_copyright
 piwik_site_id: 53
 baseurl: ""
-url: "https://planet.opensuse.org"
+url: "https://dsa-ntc.github.io/dsa-planet"
 sourcecode: "https://github.com/openSUSE/planet-o-o"
 
 theme: jekyll-theme-opensuse
