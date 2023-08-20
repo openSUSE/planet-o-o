@@ -4,7 +4,7 @@ email: ntc@dsacommittees.org
 description: site_description
 copyright: site_copyright
 piwik_site_id: 53
-baseurl: "dsa-planet"
+baseurl: "/dsa-planet"
 url: "https://dsa-ntc.github.io"
 sourcecode: "https://github.com/openSUSE/planet-o-o"
 
