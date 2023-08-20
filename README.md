@@ -1,9 +1,9 @@
-# 🌎 [Planet openSUSE](https://planet.opensuse.org)
+# 🌎 [Planet DSA](https://planet.dsausa.org)
 
-Planet openSUSE is a web feed aggregator that collects blog posts from people who contribute to openSUSE.
+Planet DSA is a web feed aggregator forked from [Planet openSUSE](https://planet.opensuse.org) that collects blog posts from various DSA chapters across the country, national working groups and committees, and our publications. 
 
 ## Adding your feed
-If you want to get your feed added, we prefer Pull Requests via GitHub.
+If you want to get your website added, we need your webpage to have an RSS feed. TBD for how to contribute -- Github form?
 
 * Fork this repository
 * Edit [planet.ini](https://github.com/openSUSE/planet-o-o/blob/master/planet.ini) and add:
@@ -26,7 +26,7 @@ If you want to get your feed added, we prefer Pull Requests via GitHub.
 * Upload your avatar to [hackergotchi directory](https://github.com/openSUSE/planet-o-o/blob/master/hackergotchi)
 * Send a Pull Request
 
-Alternatively you can send an email to admin@opensuse.org with all the mandatory information listed above
+Alternatively you can send an email to ntc@dsacommittees.org with all the mandatory information listed above
 
 ## Development environment
 To run this website locally, use the following commands:
