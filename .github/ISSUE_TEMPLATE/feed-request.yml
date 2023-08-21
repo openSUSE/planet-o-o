@@ -1,0 +1,48 @@
+name: Add new Feed
+description: Want your DSA site's feed on DSA Planet? Fill this out. 
+title: "[FEED]: "
+labels: ["addition"]
+projects: ["dsa-ntc/dsa-planet"]
+# assignees:
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for adding your webpage to DSA Planet!
+  - type: input
+    id : dsa-body
+    attributes:
+      label: Enter your Chapter or Working Group Name
+      description: Which DSA chapter, working group, or publication are you requesting planet for?
+      placeholder: ex. DSA National
+    validations: 
+      required: false
+  - type: input
+    id: contact
+    attributes:
+      label: DSA Email
+      description: How can we get in touch with you if we need more info? Make this your DSA Chapter or Committee's email
+      placeholder: ex. committee@dsausa.org
+    validations:
+      required: false
+  - type: input
+    id: rss-feed
+    attributes:
+      label: What is your RSS feed?
+      description: Planet works by pulling an RSS feed, provide one from your website here
+      placeholder: https://dsausa.org/feed.xml
+    validations:
+      required: false
+  - type: input
+    id: site
+    attributes:
+      label: What is your website?
+      description: We can link to your base webpage. By default we will link to your base webpage but if you want to point this elsewhere (e.g. point to a publication rather than a chapter webpage) then it list below
+      placeholder: https://dsausa.org
+    validations:
+      required: false
+  - type: input
+    id: image
+    attributes:
+      label: What image do you want to use?
+      description: By default your chapter will be given a rose. Have a chapter or Committee Logo? Send us a link to it here
