@@ -6,7 +6,7 @@ copyright: site_copyright
 piwik_site_id: 53
 baseurl: "/dsa-planet"
 url: "https://dsa-ntc.github.io"
-sourcecode: "https://github.com/openSUSE/planet-o-o"
+sourcecode: "https://github.com/dsa-ntc/dsa-planet/"
 
 theme: jekyll-theme-opensuse
 markdown: kramdown
@@ -35,10 +35,10 @@ navbar_links:
 footer_links:
   -
     text: source_code
-    link: https://github.com/openSUSE/planet-o-o
+    link: https://github.com/dsa-ntc/dsa-planet/
   -
     text: license
-    link: https://github.com/openSUSE/planet-o-o/blob/master/LICENSE
+    link: https://github.com/dsa-ntc/dsa-planet/blob/master/LICENSE
 
 pagination:
   enabled: true
