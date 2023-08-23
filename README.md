@@ -6,7 +6,7 @@ Planet DSA is a web feed aggregator forked from [Planet openSUSE](https://planet
 If you want to get your website added, we need your webpage to have an RSS feed. TBD for how to contribute -- Github form?
 
 * Fork this repository
-* Edit [planet.ini](https://github.com/openSUSE/planet-o-o/blob/master/planet.ini) and add:
+* Edit [planet.ini](https://github.com/dsa-ntc/dsa-planet/blob/master/planet.ini) and add:
 
 ```ini
 [id]         # replace id with your feed's unique identifier (a-z0-9-_) (eg. open-build-service)
@@ -23,7 +23,7 @@ If you want to get your website added, we need your webpage to have an RSS feed.
   email    = # (optional) your contact email                            (eg. admin@opensuse.org)
 ```
 
-* Upload your avatar to [hackergotchi directory](https://github.com/openSUSE/planet-o-o/blob/master/hackergotchi)
+* Upload your avatar to [hackergotchi directory](https://github.com/dsa-ntc/dsa-planet/blob/master/hackergotchi)
 * Send a Pull Request
 
 Alternatively you can send an email to ntc@dsacommittees.org with all the mandatory information listed above
