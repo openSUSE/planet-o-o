@@ -57,7 +57,20 @@ body h3 {
   color: #231F20;
 }
 
+.card {
+	border-color: #495057;
+	background-color: #231f20;
+}
 
+a, a:hover {
+	color: #EC1F27;
+}
+
+.btn-primary {
+	color: #ffffff;
+	background-color: #F04C53;
+	border-color: #fff;
+}
 
 @media (min-width: 786px) {
   .card-header::after, .card-header::before {
