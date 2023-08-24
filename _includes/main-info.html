@@ -1,7 +1,4 @@
-<div class="py-3 mb-3 border-bottom bg-light map-container">
-  <div class="map">
-    {% include map.svg %}
-  </div>
+<div class="py-3 mb-3 border-bottom bg-light">
   <div class="container">
     <div class="row col-md-10 mx-auto">
       <div class="col-md-auto d-flex">
@@ -9,9 +6,6 @@
       </div>
       <div class="col-md my-auto">
         <h2>{% if page.locale.name == 'Global' %}{{ locale.welcome }}{% else %}{{ locale.welcome_lang }}{% endif %}</h2>
-        {% capture project %}
-          <a href="https://opensuse.org">{{ locale.subtitle_project }}</a>
-        {% endcapture %}
         <h5>{{ locale.subtitle | replace: '$project', project }}</h5>
       </div>
       <div class="col-12 text-center">
@@ -29,6 +23,5 @@
     {% capture instructions %}
     <a href="https://en.opensuse.org/openSUSE:Planet">{{ locale.addnotice_instructions }}</a>
     {% endcapture %}
-    <div class="alert alert-info w-100">{{ locale.addnotice | replace: '$instructions', instructions }}</div>
   </div>
 </div>
