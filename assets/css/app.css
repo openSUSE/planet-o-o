@@ -66,6 +66,24 @@ a, a:hover {
 	color: #EC1F27;
 }
 
+.navbar .navbar-brand img {
+	margin-right: 0.5rem;
+	max-width: 2.5em;
+}
+
+.container {
+	padding-top: 24px;
+}
+.page-link, .page-item.active .page-link {
+	color: #fff;
+  border-color: #231F20;
+  background-color: #F04C53;
+}
+
+.global-footer, .site-footer, .footer {
+	background-color: #231F20;
+}
+
 .btn-primary {
 	color: #ffffff;
 	background-color: #F04C53;
