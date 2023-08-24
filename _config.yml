@@ -34,6 +34,15 @@ navbar_links:
 
 footer_links:
   -
+    text: Twitter
+    link: https://twitter.com/demsocialists
+  -
+    text: Facebook
+    link: https://www.facebook.com/demsocialists
+  -
+    text: Instagram
+    link: https://www.instagram.com/demsocialists/
+  -
     text: source_code
     link: https://github.com/dsa-ntc/dsa-planet/
   -
