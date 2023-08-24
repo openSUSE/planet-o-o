@@ -32,7 +32,7 @@
 }
 
 .navbar:not(.navbar-light) .navbar-brand {
-	color: #231F20;
+	color: #EC1F27;
 }
 body {
   background-color: #231F20;
@@ -44,6 +44,20 @@ body {
 .navbar:not(.navbar-light) .navbar-nav .nav-link:hover {
   color: #231F20;
 }
+
+.bg-light {
+	background-color: #f6f6f6 !important;
+}
+
+body {
+	background-color: #fff;
+}
+
+body h3 {
+  color: #231F20;
+}
+
+
 
 @media (min-width: 786px) {
   .card-header::after, .card-header::before {
@@ -121,7 +135,7 @@ body {
 
 @media (prefers-color-scheme: dark) {
   .bg-light {
-    background-color: #343a40!important
+    background-color: #231F20 !important
   }
 
   .border-bottom {
