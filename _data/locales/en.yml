@@ -1,4 +1,4 @@
-site_title: DSA Planet
+site_title: DSA Feed
 site_title_short: Planet
 site_description: The latest news and updates from everywhere across DSA
 site_copyright: 🌹 Labor donated 
@@ -18,9 +18,9 @@ join_dsa: Join DSA
 atom_feed: Atom Feed
 rss_feed: RSS 2.0 Feed
 
-welcome: DSA Planet
+welcome: DSA Feed
 # TRANSLATORS: Replace English with your language name in the translation
-welcome_lang: Welcome to the Planet DSA
+welcome_lang: Welcome to the DSA Feed
 
 subtitle: This is a feed aggregator that collects news and updates from DSA chapters, national working groups and committees, and our publications all in one convenient place.
 subtitle_project: Democratic Socialists of America
