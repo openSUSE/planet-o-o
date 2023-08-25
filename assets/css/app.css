@@ -24,7 +24,7 @@
 }
 
 .navbar:not(.navbar-light) {
-	background: #f6f6f6;
+	background: #231F20;
 }
 
 .navbar:not(.navbar-light) .navbar-nav .nav-link {
