@@ -38,7 +38,7 @@
     {% elsif page.image %}
     <meta property="og:image" content="{{ page.image | absolute_url }}">
     {% else %}
-    <meta property="og:image" content="https://static.opensuse.org/favicon-192.png">
+    <meta property="og:image" content="{{ site.baseurl }}/assets/images/favicon.ico">
     {% endif %}
   
     <!-- twitter meta -->
@@ -56,7 +56,7 @@
     {% elsif page.icon %}
     <meta name="twitter:image" content="{{ page.icon | absolute_url }}">
     {% else %}
-    <meta name="twitter:image" content="https://static.opensuse.org/favicon-192.png">
+    <meta name="twitter:image" content="{{ site.baseurl }}/assets/images/favicon.ico">
     {% endif %}
   
     <!-- javascript -->
