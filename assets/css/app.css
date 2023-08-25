@@ -36,6 +36,7 @@
 }
 body {
   background-color: #231F20;
+  color: #C1C0BF;
 }
 .navbar:not(.navbar-light) .navbar-brand:hover {
   color: #231F20;
@@ -58,18 +59,51 @@ body h3 {
 }
 
 .card {
-	border-color: #495057;
-	background-color: #231f20;
+	border-color: #231F20;
+	background-color: #231F20;
 }
 
 a, a:hover {
 	color: #EC1F27;
 }
 
+h2 {
+  font-weight: bold;
+}
+
+.navbar .navbar-brand img {
+	margin-right: 0.5rem;
+	max-width: 2.5em;
+}
+
+.container {
+	padding-top: 24px;
+}
+.page-link, .page-item.active .page-link {
+	color: #fff;
+  border-color: #231F20;
+  background-color: #F04C53;
+}
+
+.page-link:hover, .page-link:focus {
+  color: #F04C53;
+  background-color: #fff;
+  border-color: #231F20;
+}
+
+.global-footer, .site-footer, .footer {
+	background-color: #231F20;
+}
+
 .btn-primary {
 	color: #ffffff;
 	background-color: #F04C53;
 	border-color: #fff;
+}
+.btn-primary:hover {
+  color: #F04C53;
+  background-color: #fff;
+  border-color: #231F20;
 }
 
 @media (min-width: 786px) {
