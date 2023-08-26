@@ -1,4 +1,4 @@
-# 🌎 [Planet DSA](https://planet.dsausa.org)
+# 🌎 [Planet DSA](https://planet.dsausa.org) 🌹
 
 Planet DSA is a web feed aggregator forked from [Planet
 openSUSE](https://planet.opensuse.org) that collects blog posts from various DSA
