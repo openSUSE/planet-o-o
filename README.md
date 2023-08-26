@@ -29,7 +29,9 @@ form](https://github.com/dsa-ntc/dsa-planet/issues/new?assignees=&labels=additio
 * Upload your avatar to [hackergotchi directory](https://github.com/dsa-ntc/dsa-planet/blob/master/hackergotchi)
 * Send a Pull Request
 
-Alternatively you can send an email to ntc@dsacommittees.org with all the mandatory information listed above
+Alternatively you can send an email to 
+[ntc@dsacommittees.org](mailto:ntc@dsacommittees.org?subject=%5Bdsa-feed%5D%20&body=I%20have%20a%20question%20about%20DSA%20Feed)
+with all the mandatory information listed above
 
 ## Development environment
 To run this website locally, use the following commands:
