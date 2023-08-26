@@ -1,6 +1,8 @@
-# 🌎 [Planet DSA](https://planet.dsausa.org) 🌹
+# 🌎 [DSA Feed](https://feed.dsausa.org) 🌹
+[Read our announcement post on tech.dsausa.org 
+here](https://tech.dsausa.org/introducing-dsa-feed-an-aggregator-for-dsa-publications-from-the-ntc/)
 
-Planet DSA is a web feed aggregator forked from [Planet
+DSA Feed is a web feed aggregator forked from [Planet
 openSUSE](https://planet.opensuse.org) that collects blog posts from various DSA
 chapters across the country, national working groups and committees, and our
 local and national publications. 
