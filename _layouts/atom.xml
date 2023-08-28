@@ -14,7 +14,7 @@
   <generator>Pluto</generator>
 {% for post in paginator.posts %}
   <entry>
-    <id>{{ post.guid }}</id>
+    <id>{{ post.guid | xml_escape }}</id>
     <author>
       <name>{{ post.author }}</name>
       <uri>{{ post.link | xml_escape }}</uri>
