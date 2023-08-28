@@ -11,7 +11,7 @@
     <atom:link href="{{ lang_id | append: 'atom.xml' | absolute_url }}" type="application/atom+xml"/>
 {% for post in paginator.posts %}
     <item>
-      <guid isPermaLink="{% if post.guid contains '://' %}true{% else %}false{% endif %}">{{ post.guid }}</guid>
+      <guid isPermaLink="{% if post.guid contains '://' %}true{% else %}false{% endif %}">{{ post.guid | xml_escape }}</guid>
       <dc:creator>{{ post.author }}</dc:creator>
       <title>{{ post.title | xml_escape }}</title>
       <pubDate>{{ post.created_at | date_to_rfc822 }}</pubDate>
