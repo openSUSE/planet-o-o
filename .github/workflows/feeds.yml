@@ -17,7 +17,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Install dependencies
-      uses: docker://ruby:2.7
+      uses: docker://ruby:3.1
       env:
         BUNDLE_PATH: .bundle
       with:
@@ -25,7 +25,7 @@ jobs:
         args: install -j=4
 
     - name: Run the tests
-      uses: docker://ruby:2.7
+      uses: docker://ruby:3.1
       env:
         BUNDLE_PATH: .bundle
         LANG: en_US.UTF-8
