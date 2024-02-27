@@ -132,7 +132,7 @@ if unused_files_result.last
 end
 
 if did_any_fail
-  puts "Error Summary"
+  puts "[ERROR] Summary"
   puts error_messages
   abort
 end
