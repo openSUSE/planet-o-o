@@ -31,7 +31,7 @@ def check_url(url, faraday)
 
   error = "#{error_message}Non successful status code #{res.status} when trying to access '#{url}' "
   if res.status.to_i.between?(300, 399) && res.headers.key?('location')
-    return ["#{error}\nTry using '#{res.headers['location']}' instead", true]
+    return ["#{error}. Try using '#{res.headers['location']}' instead", true]
   end
 
   [error, true] unless res.status.to_i == 200
