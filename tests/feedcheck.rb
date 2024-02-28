@@ -9,11 +9,10 @@ INI_FILE = 'planet.ini'
 AV_DIR = 'hackergotchi'
 
 def check_avatar(avatar, av_dir, faraday)
-  return ['_ ', false] if avatar.nil?
+  return ['_ ', false] unless avatar
 
-  [check_url(avatar, faraday)] if avatar.include? '//'
-
-  ["✗\nAvatar not found: hackergotchi/#{avatar} ", true] unless File.file?("#{av_dir}/#{avatar}")
+  return [check_url(avatar, faraday)] if avatar.include? '//'
+  return ["✗\nAvatar not found: hackergotchi/#{avatar} ", true] unless File.file?("#{av_dir}/#{avatar}")
 
   ['✓ ', false]
 end
@@ -34,7 +33,7 @@ def check_url(url, faraday)
     return ["#{error}. Try using '#{res.headers['location']}' instead", true]
   end
 
-  [error, true] unless res.status.to_i == 200
+  return [error, true] unless res.status.to_i == 200
 
   ['✓ ', false]
 end
@@ -50,13 +49,13 @@ def parse_xml(feed, faraday)
   begin
     xml = faraday.get(URI(feed))
   rescue Faraday::ConnectionFailed
-    ["#{result.first}Connection Failure when trying to read XML from '#{feed}' ", true]
+    return ["#{result.first}Connection Failure when trying to read XML from '#{feed}' ", true]
   rescue Faraday::SSLError
-    ["#{result.first}SSL Error when trying to read XML from '#{feed}' ", true]
+    return ["#{result.first}SSL Error when trying to read XML from '#{feed}' ", true]
   end
 
   xml_err = Nokogiri::XML(xml.body).errors
-  ["#{result.first}Unusable XML syntax: #{feed}\n#{xml_err} ", true] unless xml_err.empty?
+  return ["#{result.first}Unusable XML syntax: #{feed}\n#{xml_err} ", true] unless xml_err.empty?
 
   ['✓ ', false]
 end
@@ -65,7 +64,7 @@ def check_unused_files(av_dir, avatars)
   hackergotchis = Dir.foreach(av_dir).select { |f| File.file?("#{av_dir}/#{f}") }
   diff = (hackergotchis - avatars)
 
-  [nil, false] if diff.empty? || avatars.empty?
+  return [nil, false] if diff.empty?
 
   ["There are unused files in hackergotchis:\n#{diff.join(', ')}", true]
 end
@@ -86,7 +85,9 @@ def check_source(key, section, faraday)
   did_fail |= url_result.last
 
   # Only check XML validity if URL checked out ok
-  unless url_result.last
+  if url_result.last
+    result << '_ '
+  else
     xml_result = parse_xml(feed, faraday)
     result << xml_result.first
     did_fail |= xml_result.last
