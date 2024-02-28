@@ -11,7 +11,7 @@ AV_DIR = 'hackergotchi'
 def check_avatar(avatar, av_dir, faraday)
   return ['_ ', false] unless avatar
 
-  return [check_url(avatar, faraday)] if avatar.include? '//'
+  return check_url(avatar, faraday) if avatar.include? '//'
   return ["✗\nAvatar not found: hackergotchi/#{avatar} ", true] unless File.file?("#{av_dir}/#{avatar}")
 
   ['✓ ', false]
