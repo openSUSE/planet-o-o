@@ -110,7 +110,7 @@ planet_srcs.each do |key, section|
   queue.push([key, section]) if ARGV.empty? || ARGV.include?(key)
 end
 
-workers = (0...3).map do
+workers = (0...8).map do
   Thread.new do
     until queue.empty?
       key, section = queue.pop
