@@ -1,47 +1,48 @@
 name: Jekyll CI
 
-on:
+'on':
   push:
-    branches: [ master ]
+    paths-ignore:
+      - '*.md'
+      - 'tests/feedcheck*.rb'
+      - .github/workflows/feeds.yml
+    branches:
+      - master
   pull_request:
-    branches: [ master ]
-
-
+    paths-ignore:
+      - '*.md'
+      - 'tests/feedcheck*.rb'
+      - .github/workflows/feeds.yml
+    branches:
+      - master
+  workflow_dispatch:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-    - name: Install dependencies
-      uses: docker://ruby:3.1
-      env:
-        BUNDLE_PATH: .bundle
-      with:
-        entrypoint: bundle
-        args: install -j=4
+      - name: Install Ruby
+        uses: ruby/setup-ruby@v1.172.0
+        with:
+          ruby-version: 3.2
+          bundler-cache: true
 
-    - name: Fetch the content
-      uses: docker://ruby:3.1
-      env:
-        BUNDLE_PATH: .bundle
-        LANG: en_US.UTF-8
-        LANGUAGE: en_US.UTF-8
-        LC_ALL: C.UTF-8
-      with:
-        entrypoint: bundle
-        args: exec rake
+      - name: Install Dependencies
+        run: bundler install
 
-    - name: Build the site
-      uses: docker://ruby:3.1
-      env:
-        BUNDLE_PATH: .bundle
-        LANG: en_US.UTF-8
-        LANGUAGE: en_US.UTF-8
-        LC_ALL: C.UTF-8
-      with:
-        entrypoint: bundle
-        args: exec jekyll build
+      - name: Configure Feed Cache
+        uses: actions/cache@v4
+        with:
+          path: planet.db
+          key: cache-feed-sources-${{ hashFiles('Gemfile.lock') }}
+
+      - name: Get Feed Content
+        run: bundler exec rake
+
+      - name: Proccess Feed Content
+        run: bundler exec rake build
+
+      - name: Build Jekyll Site
+        run: bundler exec jekyll build

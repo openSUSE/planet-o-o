@@ -2,35 +2,37 @@ name: Jekyll Feed Tests
 
 on:
   push:
+    paths:
+      - 'tests/feedcheck*.rb'
+      - .github/workflows/feeds.yml
+      - planet.ini
+      - Gemfile
+      - Gemfile.lock
     branches: [ master ]
   pull_request:
+    paths:
+      - 'tests/feedcheck*.rb'
+      - .github/workflows/feeds.yml
+      - planet.ini
+      - Gemfile
+      - Gemfile.lock
     branches: [ master ]
-
-
+  workflow_dispatch:
 
 jobs:
-  build:
-
+  feed-test:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-    - name: Install dependencies
-      uses: docker://ruby:3.1
-      env:
-        BUNDLE_PATH: .bundle
-      with:
-        entrypoint: bundle
-        args: install -j=4
+      - name: Install Ruby
+        uses: ruby/setup-ruby@v1.172.0
+        with:
+          ruby-version: 3.2
+          bundler-cache: true
 
-    - name: Run the tests
-      uses: docker://ruby:3.1
-      env:
-        BUNDLE_PATH: .bundle
-        LANG: en_US.UTF-8
-        LANGUAGE: en_US.UTF-8
-        LC_ALL: C.UTF-8
-      with:
-        entrypoint: bundle
-        args: exec rake test
+      - name: Install Dependencies
+        run: bundler install
+
+      - name: Check Feeds
+        run: bundle exec ruby tests/feedcheck.rb
