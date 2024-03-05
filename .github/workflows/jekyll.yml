@@ -38,10 +38,7 @@ jobs:
           path: planet.db
           key: cache-feed-sources-${{ hashFiles('Gemfile.lock') }}
 
-      - name: Get Feed Content
-        run: bundler exec rake
-
-      - name: Proccess Feed Content
+      - name: Get and Proccess Feed Content
         run: bundler exec rake build
 
       - name: Build Jekyll Site
