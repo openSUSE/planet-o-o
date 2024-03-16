@@ -28,6 +28,8 @@ subtitle_project: openSUSE Project
 addnotice: To have your blog added to this aggregator, please read $instructions
 addnotice_instructions: the instructions
 
+alt_text_prefix: the logo of
+
 page: Page $number
 
 source_code: Source Code
