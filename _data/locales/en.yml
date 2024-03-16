@@ -29,6 +29,7 @@ addnotice: To have your blog added to this aggregator, please read $instructions
 addnotice_instructions: the instructions
 
 alt_text_prefix: the logo of
+logo_alt_text: OpenSUSE's Geeko chameleon's head overlayed on a cell-shaded planet Earth, rotated to show the continents of Europe and Africa
 
 page: Page $number
 
