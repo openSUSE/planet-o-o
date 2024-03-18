@@ -36,48 +36,15 @@
 					<a href="{{ post.original_link }}">{{ post.title }}</a>
 				</h2>
 				<div class="roller">
-					<script type="text/javascript">
-						function toggleButton(id) {
-							function expand(e) {
-								const elementToChange = document.getElementById(`content_${id}`);
-								if (e.target.getAttribute('aria-expanded') === 'true') {
-									elementToChange.style.maxHeight = "50vh";
-									setTimeout(function () {
-										e.target.scrollIntoView({behavior: "smooth", block: "start"});
-									}, 250);
-									return
-								}
-								elementToChange.style.maxHeight = "100%";
-								return
-							}
-
-							function buttonStyle(e) {
-								if (e.target.getAttribute('aria-expanded') === 'true') {
-									e.target.setAttribute('aria-expanded', 'false');
-									e.target.innerHTML = "{{ locale.showmore }}";
-									return
-								}
-								e.target.setAttribute('aria-expanded', 'true');
-								e.target.innerHTML = "{{ locale.showless }}";
-								return
-							}
-
-							const button = document.getElementById(`button_${id}`)
-							button.addEventListener('click', expand);
-							button.addEventListener('click', buttonStyle);
-						}
-
-						document.addEventListener("DOMContentLoaded", function () {
-							toggleButton('{{ post.guid | slugify }}')
-						});
-					</script>
+					<script type="text/javascript" src="/assets/js/toggle_show.js"></script>
 					<div class="roller-item"
 						id="content_{{ post.guid | slugify }}">
 						{{ post.content }}
 					</div>
 					<button class="roller-button btn btn-primary mt-3"
 						id="button_{{ post.guid | slugify }}"
-						aria-expanded="false">
+						aria-expanded="false"
+						onclick="toggleArticleExpand('{{ post.guid | slugify }}', '{{ locale.showmore }}', '{{ locale.showless }}');">
 						{{ locale.showmore }}
 					</button>
 				</div>
