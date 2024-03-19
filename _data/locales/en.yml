@@ -30,7 +30,7 @@ addnotice_instructions: the instructions
 
 alt_text_avatar_prefix: the avatar of
 alt_text_avatar_default: a silhouette of a person's head and shoulders, used as a default avatar
-logo_alt_text: OpenSUSE's Geeko chameleon's head overlayed on a cell-shaded planet Earth, rotated to show the continents of Europe and Africa
+alt_text_planet_logo: OpenSUSE's Geeko chameleon's head overlayed on a cell-shaded planet Earth, rotated to show the continents of Europe and Africa
 
 page: Page $number
 
