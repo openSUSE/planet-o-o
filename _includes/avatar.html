@@ -2,6 +2,8 @@
 	width="{{include.width}}"
 	class="{{include.class}}"
 	{% if post.author and post.avatar %}
-	alt="{{locale.alt_text_prefix}} {{post.author}}"
+	alt="{{locale.alt_text_avatar_prefix}} {{post.author}}"
+	{% elsif post.author %}
+	alt="{{locale.alt_text_avatar_default}}"
 	{% endif %}
 	src="{% if post.avatar contains '://' %}{% elsif post.avatar %}{{ site.baseurl }}/hackergotchi/{% else %}{{ site.baseurl }}/hackergotchi/default.png{% endif %}{{ post.avatar }}"/>
