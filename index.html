@@ -6,17 +6,23 @@ pagination:
   sort_field: 'created_at'
   title: Global
 ---
-<link rel="alternate" type="application/rss+xml" title="{{ locale[site.title] }} - {{ page.locale.name }}" href="{{ '/global/rss20.xml' | absolute_url  }}">
-<link rel="alternate" type="application/atom+xml" title="{{ locale[site.title] }} - {{ page.locale.name }}" href="{{ '/global/atom.xml' | absolute_url  }}">
+<link rel="alternate"
+      type="application/rss+xml"
+      title="{{ locale[site.title] }} - {{ page.locale.name }}"
+      href="{{ '/global/rss20.xml' | absolute_url }}">
+<link rel="alternate"
+      type="application/atom+xml"
+      title="{{ locale[site.title] }} - {{ page.locale.name }}"
+      href="{{ '/global/atom.xml' | absolute_url }}">
 {% if paginator.page == 1 %}
 {% include main-info.html %}
 {% else %}
 {% include breadcrumbs.html %}
 {% endif %}
 <div class="container my-4 p-0">
-	{% for post in paginator.posts %}
-	{% include calendar.html %}
-	{% include single-post.html language="true" %}
-	{% endfor %}
-	{% include pagination.html %}
+    {% for post in paginator.posts %}
+    {% include calendar.html %}
+    {% include single-post.html language="true" %}
+    {% endfor %}
+    {% include pagination.html %}
 </div>
