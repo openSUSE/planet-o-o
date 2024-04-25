@@ -19,8 +19,11 @@
 						<a class="text-muted" href="{{ site.baseurl }}/{{ post.tags.first }}/">{{ lang.name }}</a>
 						{% endcapture %}
 						{% capture post_time %}
-						<a class="text-muted" href="{{ post.original_link }}">{{ post.created_at | date: "%H:%M" }}</a>
-						{% endcapture %}
+                        <a class="text-muted" href="{{ post.original_link }}">
+							<time id="time_{{ post.guid | slugify }}" datetime="{{ post.created_at | date_to_xmlschema }}">
+								{{ post.created_at | date: "%H:%M" }}
+							</time>
+						</a>						{% endcapture %}
 						<span class="text-muted">
 							{% if include.language %}
 							{{ locale.postedinat | replace: '$author', post_author | replace: '$language', post_language | replace: '$time', post_time }}
