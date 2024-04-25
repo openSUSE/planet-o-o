@@ -9,6 +9,7 @@ layout: default
       type="application/atom+xml"
       title="{{ locale[site.title] }} - {{ page.locale.name }}"
       href="{{ page.locale.id | append: '/atom.xml' | absolute_url }}">
+<a href="#maincontent" class="sr-only sr-only-focusable">Skip to main content</a>
 <script>
     // Replace rss and atom links with the local versions
     const header_links = document.querySelectorAll('.nav-link');
@@ -20,7 +21,7 @@ layout: default
 {% else %}
 {% include breadcrumbs.html %}
 {% endif %}
-<div class="container my-4 p-0">
+<div id="maincontent" class="container my-4 p-0">
     {% for post in paginator.posts %}
     {% include calendar.html %}
     {% include single-post.html %}

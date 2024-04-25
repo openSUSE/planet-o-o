@@ -14,12 +14,13 @@ pagination:
       type="application/atom+xml"
       title="{{ locale[site.title] }} - {{ page.locale.name }}"
       href="{{ '/global/atom.xml' | absolute_url }}">
+<a href="#maincontent" class="sr-only sr-only-focusable">Skip to main content</a>
 {% if paginator.page == 1 %}
 {% include main-info.html %}
 {% else %}
 {% include breadcrumbs.html %}
 {% endif %}
-<div class="container my-4 p-0">
+<div id="maincontent" class="container my-4 p-0">
     {% for post in paginator.posts %}
     {% include calendar.html %}
     {% include single-post.html language="true" %}
