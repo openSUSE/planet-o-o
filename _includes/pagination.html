@@ -9,11 +9,11 @@
 		</li>
 		{% endif %}
 		{% if paginator.page_trail %}
-			{% for trail in paginator.page_trail %}
-			<li class="page-item{% if page.url == trail.path %} active{% endif %}">
-				<a class="page-link" href="{{ trail.path | relative_url }}">{{ trail.num }}</a>
-			</li>
-			{% endfor %}
+		{% for trail in paginator.page_trail %}
+		<li class="page-item{% if page.url == trail.path %} active{% endif %}">
+			<a class="page-link" href="{{ trail.path | relative_url }}">{{ trail.num }}</a>
+		</li>
+		{% endfor %}
 		{% endif %}
 		{% if paginator.next_page %}
 		<li class="page-item">
