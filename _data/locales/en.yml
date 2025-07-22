@@ -1,7 +1,7 @@
 site_title: openSUSE Planet
 site_title_short: Planet
 site_description: Planet openSUSE site providing newest news from the openSUSE Project
-site_copyright: © 2011-2024 openSUSE contributors
+site_copyright: © 2011-2025 openSUSE contributors
 
 search: Search
 categories: Categories
@@ -29,8 +29,8 @@ addnotice: To have your blog added to this aggregator, please read $instructions
 addnotice_instructions: the instructions
 
 alt_text_avatar_prefix: the avatar of
-alt_text_avatar_default: a silhouette of a person's head and shoulders, used as a default avatar
-alt_text_planet_logo: OpenSUSE's Geeko chameleon's head overlayed on a cell-shaded planet Earth, rotated to show the continents of Europe and Africa
+alt_text_avatar_default: "a silhouette of a person's head and shoulders, used as a default avatar"
+alt_text_planet_logo: "openSUSE's Geeko chameleon's head overlayed on a cell-shaded planet Earth, rotated to show the continents of Europe and Africa"
 
 page: Page $number
 
