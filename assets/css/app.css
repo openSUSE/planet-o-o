@@ -58,33 +58,15 @@
   transition: all .15s ease;
   overflow: hidden;
 }
+
 .roller {
   position: relative;
-  margin-bottom: 3rem!important;
+  margin-bottom: 3rem !important;
 }
-.roller-label {
+
+.roller-button {
   position: absolute;
   top: 100%;
-}
-.roller-input {
-  display: none;
-}
-.roller-label .show-less {
-  display: none;
-}
-.roller-label .show-more {
-  display: block;
-}
-.roller-input:checked + .roller-label .show-less {
-  display: block;
-}
-.roller-input:checked + .roller-label .show-more {
-  display: none;
-}
-.roller-input:checked ~ .roller-item {
-  max-height: 100%;
-  transition: all .15s ease;
-  overflow: hidden;
 }
 
 .avatar {

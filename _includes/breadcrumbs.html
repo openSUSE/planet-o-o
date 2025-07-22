@@ -8,7 +8,11 @@
 		</a>
 	</li>
 	<li class="breadcrumb-item">
-		{% if page.locale.name == 'Global' %}{% assign lang_id = '/' %}{% else %}{% assign lang_id = page.locale.id | append: '/' %}{% endif %}
+		{% if page.locale.name == 'Global' %}
+		{% assign lang_id = '/' %}
+		{% else %}
+		{% assign lang_id = page.locale.id | append: '/' %}
+		{% endif %}
 		<a href="{{ lang_id  | absolute_url }}">
 			{{ page.locale.name }}
 		</a>

@@ -1,7 +1,7 @@
 site_title: openSUSE Planet
 site_title_short: Planet
 site_description: Planet openSUSE site providing newest news from the openSUSE Project
-site_copyright: © 2011-2022 openSUSE contributors
+site_copyright: © 2011-2025 openSUSE contributors
 
 search: Search
 categories: Categories
@@ -27,6 +27,14 @@ subtitle_project: openSUSE Project
 
 addnotice: To have your blog added to this aggregator, please read $instructions
 addnotice_instructions: the instructions
+
+alt_text_avatar_prefix: the avatar of
+alt_text_avatar_default: "a silhouette of a person's head and shoulders, used as a default avatar"
+alt_text_planet_logo: "openSUSE's Geeko chameleon's head overlayed on a cell-shaded planet Earth, rotated to show the continents of Europe and Africa"
+alt_text_member_logo: "white silhouette of the head of openSUSE's Geeko chameleon"
+alt_text_connect_logo: "green silhouette of the head of openSUSE's Geeko chameleon"
+alt_text_irc_logo: "white hash symbol symbolizing internet relay chat (IRC)"
+alt_text_gsoc_logo: "an orange sun containing an empty html tag, the logo of Google Summer of Code"
 
 page: Page $number
 
