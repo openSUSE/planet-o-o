@@ -94,7 +94,7 @@ GEM
       logutils (>= 0.6.1)
     mercenary (0.4.0)
     minitest (5.18.1)
-    nokogiri (1.16.5-x86_64-linux)
+    nokogiri (1.18.8-x86_64-linux-gnu)
       racc (~> 1.4)
     opmlparser (1.0.1)
     pakman (1.1.0)
