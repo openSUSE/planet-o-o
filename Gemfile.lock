@@ -11,27 +11,40 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (6.1.7.8)
-      activesupport (= 6.1.7.8)
-    activerecord (6.1.7.8)
-      activemodel (= 6.1.7.8)
-      activesupport (= 6.1.7.8)
+    activemodel (7.1.5.2)
+      activesupport (= 7.1.5.2)
+    activerecord (7.1.5.2)
+      activemodel (= 7.1.5.2)
+      activesupport (= 7.1.5.2)
+      timeout (>= 0.4.0)
     activerecord-utils (0.4.1)
       activerecord
       logutils
-    activesupport (6.1.7.8)
+    activesupport (7.1.5.2)
+      base64
+      benchmark (>= 0.3)
+      bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
+      connection_pool (>= 2.2.5)
+      drb
       i18n (>= 1.6, < 2)
+      logger (>= 1.4.2)
       minitest (>= 5.1)
+      mutex_m
+      securerandom (>= 0.3)
       tzinfo (~> 2.0)
-      zeitwerk (~> 2.3)
     activityutils (0.1.2)
       logutils (>= 0.6.1)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
+    base64 (0.3.0)
+    benchmark (0.4.1)
+    bigdecimal (3.2.2)
     colorator (1.1.0)
-    concurrent-ruby (1.2.2)
+    concurrent-ruby (1.3.5)
+    connection_pool (2.5.3)
     date-formatter (0.1.1)
+    drb (2.2.3)
     em-websocket (0.5.3)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0)
@@ -52,7 +65,7 @@ GEM
     gli (2.21.5)
     google-protobuf (3.25.5-x86_64-linux)
     http_parser.rb (0.8.0)
-    i18n (1.14.6)
+    i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     iniparser (1.0.1)
     jekyll (4.3.4)
@@ -88,12 +101,14 @@ GEM
     listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    logger (1.7.0)
     logutils (0.6.1)
     logutils-activerecord (0.2.1)
       activerecord
       logutils (>= 0.6.1)
     mercenary (0.4.0)
-    minitest (5.18.1)
+    minitest (5.25.5)
+    mutex_m (0.3.0)
     nokogiri (1.18.9-x86_64-linux-gnu)
       racc (~> 1.4)
     opmlparser (1.0.1)
@@ -157,6 +172,7 @@ GEM
     sass-embedded (1.69.5)
       google-protobuf (~> 3.23)
       rake (>= 13.0.0)
+    securerandom (0.4.1)
     sqlite3 (1.6.3-x86_64-linux)
     terminal-table (3.0.2)
       unicode-display_width (>= 1.1.1, < 3)
@@ -165,17 +181,17 @@ GEM
       logutils (>= 0.6.1)
       props (>= 1.1.2)
       rubyzip (>= 1.0.0)
+    timeout (0.4.3)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.4.2)
     webrick (1.8.2)
-    zeitwerk (2.6.18)
 
 PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  activerecord (< 7.0)
+  activerecord (< 8.0)
   faraday
   jekyll
   jekyll-paginate-v2
