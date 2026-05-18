@@ -1,6 +1,6 @@
 name: Jekyll Feed Tests
 
-'on':
+on:
   push:
     paths:
       - 'hackergotchi/*'
@@ -26,6 +26,12 @@ name: Jekyll Feed Tests
   workflow_dispatch:
 
 permissions: read-all
+
+concurrency:
+  group: >-
+    ${{ github.workflow }}
+    -${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   feed-test:
