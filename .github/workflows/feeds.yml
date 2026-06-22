@@ -37,7 +37,7 @@ jobs:
   feed-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Install Ruby
         uses: ruby/setup-ruby@v1.308.0
