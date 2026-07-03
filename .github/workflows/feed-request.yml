@@ -31,7 +31,7 @@ jobs:
             - name: Install Ruby
               uses: ruby/setup-ruby@v1.314.0
               with:
-                ruby-version: 3.2.9
+                ruby-version: 3.4.9
                 bundler-cache: true
 
             - name: Install dependencies
@@ -43,7 +43,7 @@ jobs:
               id: add-feed-ini
               run: |
                 bundle exec ruby tests/feed_request.rb '${{ steps.feed-data.outputs.json }}'
-  
+
             - run: |
                 raw_name='${{ fromJSON(steps.feed-data.outputs.json).enter_your_chapter_or_working_group_name }}'
                 sanitized_name=$(echo $raw_name | tr '[:upper:]' '[:lower:]' | tr -dc '[:alnum:]\n\r' | tr ' ' '-')
