@@ -27,7 +27,7 @@ jobs:
                   issue-form-template: feed-request.yml
 
             - name: Install Ruby
-              uses: ruby/setup-ruby@v1.308.0
+              uses: ruby/setup-ruby@v1.314.0
               with:
                 ruby-version: 3.2.9
                 bundler-cache: true
