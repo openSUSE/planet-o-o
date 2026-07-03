@@ -4,8 +4,10 @@ on:
     issues:
         types: [labeled]
 
-
 permissions: read-all
+
+env:
+    BRANCH_NAME: requested-addition
 
 jobs:
     include-feed:
