@@ -14,23 +14,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v7
 
-    - name: Install dependencies
-      uses: docker://ruby:3.1
-      env:
-        BUNDLE_PATH: .bundle
+    - name: Install Ruby
+      uses: ruby/setup-ruby@v1.314.0
       with:
-        entrypoint: bundle
-        args: install -j=4
+        ruby-version: 3.2.9
+        bundler-cache: true
 
-    - name: Run the tests
-      uses: docker://ruby:3.1
-      env:
-        BUNDLE_PATH: .bundle
-        LANG: en_US.UTF-8
-        LANGUAGE: en_US.UTF-8
-        LC_ALL: C.UTF-8
-      with:
-        entrypoint: bundle
-        args: exec rake test
+    - name: Install Dependencies
+      run: bundler install
+
+    - name: Check Feeds
+      run: bundle exec ruby tests/feedcheck.rb
+
+    - name: Save Job Summary
+      if: failure()
+      run: cat error-summary.md >> $GITHUB_STEP_SUMMARY
