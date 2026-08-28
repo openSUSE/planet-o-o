@@ -76,6 +76,7 @@ GEM
     http_parser.rb (0.8.1)
     i18n (1.15.2)
       concurrent-ruby (~> 1.0)
+    inifile (3.0.0)
     iniparser (1.0.1)
     jekyll (4.4.1)
       addressable (~> 2.4)
@@ -217,6 +218,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   faraday
+  inifile
   jekyll
   jekyll-paginate-v2
   jekyll-theme-opensuse!
