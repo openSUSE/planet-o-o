@@ -6,18 +6,16 @@ on:
   pull_request:
     branches: [ master ]
 
-
-
 jobs:
   build:
 
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v7
 
     - name: Install dependencies
-      uses: docker://ruby:3.1
+      uses: docker://ruby:3.4.3
       env:
         BUNDLE_PATH: .bundle
       with:
@@ -25,7 +23,7 @@ jobs:
         args: install -j=4
 
     - name: Fetch the content
-      uses: docker://ruby:3.1
+      uses: docker://ruby:3.4.3
       env:
         BUNDLE_PATH: .bundle
         LANG: en_US.UTF-8
@@ -36,7 +34,7 @@ jobs:
         args: exec rake
 
     - name: Build the site
-      uses: docker://ruby:3.1
+      uses: docker://ruby:3.4.3
       env:
         BUNDLE_PATH: .bundle
         LANG: en_US.UTF-8

@@ -27,7 +27,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  feed-test:
+  feed-check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
