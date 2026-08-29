@@ -1,139 +1,87 @@
 # frozen_string_literal: true
 
 require 'faraday'
-require 'iniparser'
-require 'nokogiri'
-require 'uri'
+require 'inifile'
 
-INI_FILE = 'planet.ini'
-AV_DIR = 'hackergotchi'
+require_relative 'feedcheck_checks'
 
-def check_avatar(avatar, av_dir, faraday)
-  return ['_ ', false] if avatar.nil?
-
-  [check_url(avatar, faraday)] if avatar.include? '//'
-
-  ["✗\nAvatar not found: hackergotchi/#{avatar} ", true] unless File.file?("#{av_dir}/#{avatar}")
-
-  ['✓ ', false]
-end
-
-def check_url(url, faraday)
-  error_message = '✗ '
-
-  begin
-    res = faraday.get(URI(url))
-  rescue Faraday::ConnectionFailed
-    return ["#{error_message}Connection Failure when trying to access '#{url}' ", true]
-  rescue Faraday::SSLError
-    return ["#{error_message}SSL Error when trying to access '#{url}' ", true]
-  end
-
-  error = "#{error_message}Non successful status code #{res.status} when trying to access '#{url}' "
-  if res.status.to_i.between?(300, 399) && res.headers.key?('location')
-    return ["#{error}. Try using '#{res.headers['location']}' instead", true]
-  end
-
-  [error, true] unless res.status.to_i == 200
-
-  ['✓ ', false]
-end
-
-def check_urls(url_arr, faraday)
-  results = url_arr.map { |url| check_url(url, faraday) }
-  [results.map(&:first).join, results.any?(&:last)]
-end
-
-def parse_xml(feed, faraday)
-  result = ['✗ ', true]
-
-  begin
-    xml = faraday.get(URI(feed))
-  rescue Faraday::ConnectionFailed
-    ["#{result.first}Connection Failure when trying to read XML from '#{feed}' ", true]
-  rescue Faraday::SSLError
-    ["#{result.first}SSL Error when trying to read XML from '#{feed}' ", true]
-  end
-
-  xml_err = Nokogiri::XML(xml.body).errors
-  ["#{result.first}Unusable XML syntax: #{feed}\n#{xml_err} ", true] unless xml_err.empty?
-
-  ['✓ ', false]
-end
-
-def check_unused_files(av_dir, avatars)
-  hackergotchis = Dir.foreach(av_dir).select { |f| File.file?("#{av_dir}/#{f}") }
-  diff = (hackergotchis - avatars)
-
-  [nil, false] if diff.empty? || avatars.empty?
-
-  ["There are unused files in hackergotchis:\n#{diff.join(', ')}", true]
-end
-
-def check_source(key, section, faraday)
-  did_fail = false
-  result = [":: #{key} =>  "]
-  avatar = section['avatar'] if section.key?('avatar')
-
-  avatar_result = check_avatar(avatar, AV_DIR, faraday)
-  result << avatar_result.first
-  did_fail |= avatar_result.last
-
-  link = section['link'] if section.key?('link')
-  feed = section['feed'] if section.key?('feed')
-  url_result = check_urls([link, feed], faraday)
-  result << url_result.first
-  did_fail |= url_result.last
-
-  # Only check XML validity if URL checked out ok
-  unless url_result.last
-    xml_result = parse_xml(feed, faraday)
-    result << xml_result.first
-    did_fail |= xml_result.last
-  end
-
-  [[result.compact.join, did_fail], avatar]
-end
-
-planet_srcs = INI.load_file(INI_FILE)
-did_any_fail = false
-error_messages = []
-avatars = ['default.png']
+INI_FILE = 'planet.ini'           # ini file containing library of feeds
+DEFAULT_AVATAR = 'default.png'    # name of image to use if avatar is not provided
+AV_DIR = 'hackergotchi'           # folder containing local feed avatars
+WORKER_COUNT = 3                  # number of concurrent workers
+FEED_NAME_PADDING = 48            # number of characters before each ``=>`` in log output
 
 faraday = Faraday.new(request: { open_timeout: 10 }) do |f|
   f.adapter :net_http
 end
 
 queue = Queue.new
-planet_srcs.each do |key, section|
-  queue.push([key, section]) if ARGV.empty? || ARGV.include?(key)
+known_feed_names = []
+IniFile.load(INI_FILE).to_h.each do |feed_name, section|
+  known_feed_names << feed_name
+  queue.push([feed_name, section]) if ARGV.empty? || ARGV.include?(feed_name)
 end
 
-workers = (0...3).map do
-  Thread.new do
-    until queue.empty?
-      key, section = queue.pop
-      next unless section.is_a?(Hash)
+error_messages = []
+did_any_fail = false
 
-      res, avatar = check_source(key, section, faraday)
-      avatars << avatar
-      puts res.first if res.first
-      error_messages << res.first if res.last
-      did_any_fail ||= res.last
+missing_feed_names = ARGV - known_feed_names
+missing_feed_names.each do |feed_name|
+  puts "#{feed_name.ljust(FEED_NAME_PADDING)} =>  not found in #{INI_FILE}"
+  error_messages << "#{feed_name}\nFeed not found in #{INI_FILE}"
+  did_any_fail = true
+end
+
+puts "#{'::notice::Feed Errors Summary'.ljust(FEED_NAME_PADDING)} =>  (avatar) (link) (feed) (xml)"
+
+avatars = [DEFAULT_AVATAR]
+mutex = Mutex.new
+
+workers = Array.new(WORKER_COUNT) do
+  Thread.new do
+    loop do
+      begin
+        feed_name, section = queue.pop(true)
+      rescue
+        break
+      end
+      next unless section.is_a?(Hash) && feed_name != 'global'
+
+      result = check_source(feed_name, section, faraday, AV_DIR)
+      puts "#{feed_name.ljust(FEED_NAME_PADDING)} =>  #{result.symbols}"
+
+      mutex.synchronize do
+        avatars << result.avatar
+        error_messages << result.error_messages.unshift(feed_name) if result.failed
+        did_any_fail ||= result.failed
+      end
     end
   end
 end
 workers.each(&:join)
 
-unused_files_result = check_unused_files(AV_DIR, avatars)
-if unused_files_result.last
-  error_messages << unused_files_result.first
-  puts "[WARNING] #{unused_files_result.first}"
-end
+run_unused_check = ARGV.empty? || ARGV[0].nil?
+unused_files_message = run_unused_check ? check_unused_files(AV_DIR, avatars) : nil
+
 
 if did_any_fail
-  puts "[ERROR] Summary"
-  puts error_messages
+  error_messages.each { |message| puts "::group::#{message.join("\n::error::#{message.first}: ")}\n::endgroup::" }
+
+  File.open('error-summary.md', 'w') do |file|
+    file.write "# Summary\n"
+    file.write "\n## Error Summary\n"
+    error_messages.each { |message| file.write "\n### #{message.join("\n")}\n" }
+    if unused_files_message
+      puts "::warning::#{unused_files_message}"
+      file.write "\n## Warning Summary\n"
+      file.write "\n#{unused_files_message}\n"
+    end
+  end
+
   abort
+elsif unused_files_message
+  puts "::warning::#{unused_files_message}"
 end
-puts 'All feeds passed checks!'
+
+File.delete('error-summary.md') if File.exist?('error-summary.md')
+puts '::notice::All feeds passed checks!'
