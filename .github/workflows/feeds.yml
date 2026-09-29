@@ -37,9 +37,6 @@ jobs:
           ruby-version: 3.4.3
           bundler-cache: true
 
-      - name: Install Dependencies
-        run: bundler install
-
       - name: Check Feeds
         run: bundle exec ruby tests/feedcheck.rb
 
