@@ -16,9 +16,10 @@ faraday = Faraday.new(request: { open_timeout: 10 }) do |f|
 end
 
 queue = Queue.new
-known_feed_names = []
-IniFile.load(INI_FILE).to_h.each do |feed_name, section|
-  known_feed_names << feed_name
+ini_data = IniFile.load(INI_FILE).to_h
+known_feed_names = ini_data.keys
+
+ini_data.each do |feed_name, section|
   queue.push([feed_name, section]) if ARGV.empty? || ARGV.include?(feed_name)
 end
 
@@ -39,12 +40,8 @@ mutex = Mutex.new
 
 workers = Array.new(WORKER_COUNT) do
   Thread.new do
-    loop do
-      begin
-        feed_name, section = queue.pop(true)
-      rescue
-        break
-      end
+    while (task = (queue.pop(true) rescue nil))
+      feed_name, section = task
       next unless section.is_a?(Hash) && feed_name != 'global'
 
       result = check_source(feed_name, section, faraday, AV_DIR)
@@ -60,22 +57,22 @@ workers = Array.new(WORKER_COUNT) do
 end
 workers.each(&:join)
 
-run_unused_check = ARGV.empty? || ARGV[0].nil?
+run_unused_check = ARGV.empty?
 unused_files_message = run_unused_check ? check_unused_files(AV_DIR, avatars) : nil
-
 
 if did_any_fail
   error_messages.each { |message| puts "::group::#{message.join("\n::error::#{message.first}: ")}\n::endgroup::" }
 
   File.open('error-summary.md', 'w') do |file|
-    file.write "# Summary\n"
-    file.write "\n## Error Summary\n"
-    error_messages.each { |message| file.write "\n### #{message.join("\n")}\n" }
+    summary = "# Summary\n\n## Error Summary\n"
+    error_messages.each { |message| summary << "\n### #{message.join("\n")}\n" }
+    
     if unused_files_message
       puts "::warning::#{unused_files_message}"
-      file.write "\n## Warning Summary\n"
-      file.write "\n#{unused_files_message}\n"
+      summary << "\n## Warning Summary\n\n#{unused_files_message}\n"
     end
+    
+    file.write(summary)
   end
 
   abort
