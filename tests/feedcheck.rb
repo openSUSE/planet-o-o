@@ -9,7 +9,7 @@ INI_FILE = 'planet.ini'           # ini file containing library of feeds
 DEFAULT_AVATAR = 'default.png'    # name of image to use if avatar is not provided
 AV_DIR = 'hackergotchi'           # folder containing local feed avatars
 WORKER_COUNT = 3                  # number of concurrent workers
-FEED_NAME_PADDING = 48            # number of characters before each ``=>`` in log output
+FEED_NAME_PADDING = 40            # number of characters before each ``=>`` in log output
 
 faraday = Faraday.new(request: { open_timeout: 10 }) do |f|
   f.adapter :net_http
@@ -40,7 +40,11 @@ mutex = Mutex.new
 
 workers = Array.new(WORKER_COUNT) do
   Thread.new do
-    while (task = (queue.pop(true) rescue nil))
+    while (task = begin
+      queue.pop(true)
+    rescue StandardError
+      nil
+    end)
       feed_name, section = task
       next unless section.is_a?(Hash) && feed_name != 'global'
 
@@ -64,14 +68,14 @@ if did_any_fail
   error_messages.each { |message| puts "::group::#{message.join("\n::error::#{message.first}: ")}\n::endgroup::" }
 
   File.open('error-summary.md', 'w') do |file|
-    summary = "# Summary\n\n## Error Summary\n"
+    summary = +"# Summary\n\n## Error Summary\n"
     error_messages.each { |message| summary << "\n### #{message.join("\n")}\n" }
-    
+
     if unused_files_message
       puts "::warning::#{unused_files_message}"
       summary << "\n## Warning Summary\n\n#{unused_files_message}\n"
     end
-    
+
     file.write(summary)
   end
 
