@@ -33,7 +33,11 @@ def check_status_and_location(response)
   base_error = "Status code #{status}"
 
   if status.between?(300, 399) && location
-    uri = (URI.parse(location) rescue nil)
+    uri = begin
+      URI.parse(location)
+    rescue StandardError
+      nil
+    end
 
     if uri&.host&.end_with?('google.com') && uri&.path == '/sorry/index'
       return CheckResult.new(Status::SKIPPED, "#{base_error} (google bot challenge) ")
@@ -86,6 +90,7 @@ def check_avatar(avatar, av_dir, faraday)
   CheckResult.new(Status::PASSED)
 end
 
+# Methods for processing each source
 class SourceChecks
   def initialize
     @results = {}
@@ -121,7 +126,7 @@ def check_source(feed_name, section, faraday, avatar_directory)
   checks.add('link', link_result)
   checks.add('feed', feed_result)
 
-  xml_result = (link_result.failed? || feed_result.failed?) ? CheckResult.new(Status::SKIPPED) : parse_feed(feed, faraday)
+  xml_result = link_result.failed? || feed_result.failed? ? CheckResult.new(Status::SKIPPED) : parse_feed(feed, faraday)
   checks.add('xml', xml_result)
 
   SourceResult.new(
