@@ -126,7 +126,7 @@ def check_source(feed_name, section, faraday, avatar_directory)
   checks.add('link', link_result)
   checks.add('feed', feed_result)
 
-  xml_result = link_result.failed? || feed_result.failed? ? CheckResult.new(Status::SKIPPED) : parse_feed(feed, faraday)
+  xml_result = feed_result.failed? ? CheckResult.new(Status::SKIPPED) : parse_feed(feed, faraday)
   checks.add('xml', xml_result)
 
   SourceResult.new(
