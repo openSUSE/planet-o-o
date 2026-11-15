@@ -6,3 +6,4 @@ _posts/
 .sass-cache/
 _site/
 vendor/
+error-summary.md
